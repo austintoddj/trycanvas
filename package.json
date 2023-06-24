@@ -1,0 +1,30 @@
+{
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "format": "prettier --write .",
+        "lint": "eslint ."
+    },
+    "dependencies": {
+        "vue": "^3.2.47",
+        "vue-gtag": "^2.0.1"
+    },
+    "devDependencies": {
+        "@headlessui/vue": "^1.7.13",
+        "@heroicons/vue": "^2.0.17",
+        "@tailwindcss/forms": "^0.5.3",
+        "@tailwindcss/typography": "^0.5.9",
+        "@vitejs/plugin-vue": "^4.1.0",
+        "autoprefixer": "^10.4.14",
+        "eslint": "^8.31",
+        "eslint-config-prettier": "^8.7",
+        "eslint-plugin-vue": "^9.8",
+        "postcss": "^8.4.23",
+        "prettier": "^2.8",
+        "tailwindcss": "^3.3.2",
+        "vite": "^4.3.2"
+    }
+}
