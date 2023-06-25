@@ -9,9 +9,9 @@
         "lint": "eslint ."
     },
     "dependencies": {
+        "@vercel/analytics": "^1.0.1",
         "vue": "^3.2.47",
-        "vue-gtag": "^2.0.1",
-        "@vercel/analytics": "^1.0.1"
+        "vue-gtag": "^2.0.1"
     },
     "devDependencies": {
         "@headlessui/vue": "^1.7.13",
