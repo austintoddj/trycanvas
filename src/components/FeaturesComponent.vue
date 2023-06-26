@@ -2,12 +2,12 @@
     <div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
             <h2 class="text-base font-semibold leading-7 text-indigo-400">
-                Deploy faster
+                Work smarter
             </h2>
             <p
                 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl"
             >
-                Everything you need to deploy your app
+                Packed with all the right tools
             </p>
             <p class="mt-6 text-lg leading-8 text-gray-300">
                 Lorem ipsum dolor sit amet consect adipisicing elit. Possimus
@@ -94,9 +94,9 @@
                         class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-300"
                     >
                         <p class="flex-auto">
-                            Publish once, distribute everywhere. Attach tags,
-                            descriptions, and canonical links so your content up
-                            to be discovered in as many ways as possible.
+                            Incorporate meaningful tags, informative
+                            descriptions, and canonical links to boost the
+                            discoverability of your work.
                         </p>
                         <p class="mt-6">
                             <a
@@ -173,50 +173,49 @@
 <script setup>
 import { ChartBarIcon, TagIcon, PhotoIcon } from '@heroicons/vue/24/outline'
 import {
-    ArrowPathIcon,
-    CloudArrowUpIcon,
-    Cog6ToothIcon,
-    FingerPrintIcon,
     LockClosedIcon,
-    ServerIcon
+    MoonIcon,
+    EnvelopeIcon,
+    LanguageIcon,
+    CalendarDaysIcon,
+    RectangleGroupIcon
 } from '@heroicons/vue/20/solid'
 
 const secondaryFeatures = [
     {
-        name: 'Push to deploy.',
+        name: 'Roles and permissions.',
         description:
-            'Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.',
-        icon: CloudArrowUpIcon
-    },
-    {
-        name: 'SSL certificates.',
-        description:
-            'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
+            'Seamless collaboration between administrators, editors, and collaborators.',
         icon: LockClosedIcon
     },
     {
-        name: 'Simple queues.',
+        name: 'Dark mode.',
         description:
-            'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus.',
-        icon: ArrowPathIcon
+            'Adaptive color schemes that adjust to the time of day and your preferences.',
+        icon: MoonIcon
     },
     {
-        name: 'Advanced security.',
+        name: 'Writers digest.',
         description:
-            'Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.',
-        icon: FingerPrintIcon
+            'Get a weekly email summary of how audiences are engaging with your posts.',
+        icon: EnvelopeIcon
     },
     {
-        name: 'Powerful API.',
-        description:
-            'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
-        icon: Cog6ToothIcon
+        name: 'Localized content',
+        description: 'Built-in support for 17 different languages.',
+        icon: LanguageIcon
     },
     {
-        name: 'Database backups.',
+        name: 'Tags & Topics.',
         description:
-            'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. ',
-        icon: ServerIcon
+            "Make it easy for users to find the content they're looking for, no matter how they're searching.",
+        icon: RectangleGroupIcon
+    },
+    {
+        name: 'Post scheduling.',
+        description:
+            'Publish your posts on autopilot so you can stay ahead of the curve.',
+        icon: CalendarDaysIcon
     }
 ]
 </script>
