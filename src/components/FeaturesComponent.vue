@@ -2,7 +2,7 @@
     <div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
             <h2 class="text-base font-semibold leading-7 text-indigo-400">
-                Work smarter
+                Everything you need
             </h2>
             <p
                 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl"
@@ -10,8 +10,8 @@
                 Packed with all the right tools
             </p>
             <p class="mt-6 text-lg leading-8 text-gray-300">
-                Lorem ipsum dolor sit amet consect adipisicing elit. Possimus
-                magnam voluptatum cupiditate veritatis in accusamus quisquam.
+                Build a blog. Publish a newsletter. Keep a journal. Use it to
+                write about anything that matters to you, it's a blank Canvas.
             </p>
         </div>
         <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
@@ -115,12 +115,12 @@
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-2xl sm:text-center">
                 <h2 class="text-base font-semibold leading-7 text-indigo-400">
-                    Everything you need
+                    Independent publishing
                 </h2>
                 <p
                     class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl"
                 >
-                    No server? No problem.
+                    Your data. Your story.
                 </p>
                 <p class="mt-6 text-lg leading-8 text-gray-300">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.

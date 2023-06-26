@@ -65,8 +65,14 @@
                 deserves.
             </h2>
             <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
-                Incididunt sint fugiat pariatur cupidatat consectetur sit cillum
-                anim id veniam aliqua proident excepteur commodo do ea.
+                Not convinced yet? Try the links below to read more about what
+                Canvas can do for you or spin up a live demo of your own with
+                <a
+                    href="https://www.gitpod.io"
+                    class="font-bold"
+                    target="_blank"
+                    >Gitpod</a
+                >.
             </p>
             <div class="mt-10 flex items-center justify-center gap-x-6">
                 <a
