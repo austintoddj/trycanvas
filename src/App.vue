@@ -2,7 +2,7 @@
     <div class="bg-gray-900">
         <main>
             <HeroComponent />
-            <SponsorsComponent />
+            <CommunityComponent />
             <FeaturesComponent />
             <StatsComponent />
             <CTAComponent />
@@ -13,7 +13,7 @@
 
 <script setup>
 import HeroComponent from '@/components/HeroComponent.vue'
-import SponsorsComponent from '@/components/SponsorsComponent.vue'
+import CommunityComponent from '@/components/CommunityComponent.vue'
 import FeaturesComponent from '@/components/FeaturesComponent.vue'
 import StatsComponent from '@/components/StatsComponent.vue'
 import CTAComponent from '@/components/CTAComponent.vue'
