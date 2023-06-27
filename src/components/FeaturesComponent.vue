@@ -38,13 +38,6 @@
                             Analytics, so we built in just the best parts, and
                             added a couple new ones.
                         </p>
-                        <p class="mt-6">
-                            <a
-                                href="#"
-                                class="text-sm font-semibold leading-6 text-indigo-400"
-                                >Learn more <span aria-hidden="true">→</span></a
-                            >
-                        </p>
                     </dd>
                 </div>
 
@@ -68,13 +61,6 @@
                             and give your content a splash of color with over 3
                             million free, hi-res images.
                         </p>
-                        <p class="mt-6">
-                            <a
-                                href="#"
-                                class="text-sm font-semibold leading-6 text-indigo-400"
-                                >Learn more <span aria-hidden="true">→</span></a
-                            >
-                        </p>
                     </dd>
                 </div>
 
@@ -97,13 +83,6 @@
                             Incorporate meaningful tags, informative
                             descriptions, and canonical links to boost the
                             discoverability of your work.
-                        </p>
-                        <p class="mt-6">
-                            <a
-                                href="#"
-                                class="text-sm font-semibold leading-6 text-indigo-400"
-                                >Learn more <span aria-hidden="true">→</span></a
-                            >
                         </p>
                     </dd>
                 </div>
