@@ -80,9 +80,9 @@
                         class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-300"
                     >
                         <p class="flex-auto">
-                            Incorporate meaningful tags, informative
-                            descriptions, and canonical links to boost the
-                            discoverability of your work.
+                            Incorporate meaningful tags, informative meta data,
+                            and canonical links to boost rankings on search and
+                            social media.
                         </p>
                     </dd>
                 </div>
@@ -102,9 +102,9 @@
                     Your data. Your story.
                 </p>
                 <p class="mt-6 text-lg leading-8 text-gray-300">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Maiores impedit perferendis suscipit eaque, iste dolor
-                    cupiditate blanditiis.
+                    Make your voice heard without fighting platforms or
+                    paywalls. From domain to design, you own it all. Configure
+                    it just the way you like.
                 </p>
             </div>
         </div>

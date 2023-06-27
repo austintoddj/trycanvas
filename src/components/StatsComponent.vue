@@ -7,12 +7,12 @@
             <p
                 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl"
             >
-                Trusted by thousands of developers&nbsp;worldwide
+                Years of experience in the Laravel community
             </p>
             <p class="mt-6 text-lg leading-8 text-gray-300">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis ratione.
+                Canvas was made for developers, by developers. Built for the
+                most popular PHP framework on the market today, you'll be in
+                good company.
             </p>
         </div>
         <dl
