@@ -111,8 +111,8 @@
         <div class="relative overflow-hidden pt-16">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <img
-                    src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
-                    alt="App screenshot"
+                    src="/dash.png"
+                    alt="Canvas stats"
                     class="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/10"
                     width="2432"
                     height="1442"
