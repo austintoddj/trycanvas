@@ -180,7 +180,7 @@ const secondaryFeatures = [
         icon: EnvelopeIcon
     },
     {
-        name: 'Localized content',
+        name: 'Localization.',
         description: 'Built-in support for 17 different languages.',
         icon: LanguageIcon
     },
