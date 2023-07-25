@@ -9,8 +9,7 @@ function getConnectionSpeed() {
 }
 
 export function sendToVercelAnalytics(metric) {
-  console.log(process.env.VITE_VERCEL_GIT_REPO_ID)
-  console.log(process.env.VITE_VERCEL_ANALYTICS_ID)
+  console.log(process.env.VERCEL)
 
     const analyticsId = process.env.VERCEL_ANALYTICS_ID
     if (!analyticsId) {
