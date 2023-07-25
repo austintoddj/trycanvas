@@ -1,4 +1,4 @@
-const vitalsUrl = 'https://vitals.vercel-analytics.com/v1/vitals'
+const vitalsUrl = 'https://vitals.vercel-insights.com/v1/vitals'
 
 function getConnectionSpeed() {
     return 'connection' in navigator &&
