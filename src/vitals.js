@@ -11,6 +11,7 @@ function getConnectionSpeed() {
 export function sendToVercelAnalytics(metric) {
     const analyticsId = process.env.VERCEL_ANALYTICS_ID
     if (!analyticsId) {
+        console.log('No ID found')
         return
     }
 
