@@ -1,16 +1,16 @@
 import { onCLS, onFID, onFCP, onLCP, onTTFB } from 'web-vitals'
 
-import { sendToAnalytics } from './vitals'
-
-function reportWebVitals(options) {
-    try {
-        onFID(metric => sendToAnalytics(metric, options))
-        onTTFB(metric => sendToAnalytics(metric, options))
-        onLCP(metric => sendToAnalytics(metric, options))
-        onCLS(metric => sendToAnalytics(metric, options))
-        onFCP(metric => sendToAnalytics(metric, options))
-    } catch (err) {
-        console.error('[Analytics]', err)
+const reportWebVitals = onPerfEntry => {
+    if (onPerfEntry && onPerfEntry instanceof Function) {
+        try {
+            onCLS(onPerfEntry)
+            onFID(onPerfEntry)
+            onFCP(onPerfEntry)
+            onLCP(onPerfEntry)
+            onTTFB(onPerfEntry)
+        } catch (err) {
+            console.error('[Analytics]', err)
+        }
     }
 }
 

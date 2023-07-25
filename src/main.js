@@ -4,11 +4,11 @@ import App from './App.vue'
 import VueGtag from 'vue-gtag'
 import { inject } from '@vercel/analytics'
 import reportWebVitals from './reportWebVitals'
-import { sendToAnalytics } from './vitals'
+import { sendToVercelAnalytics } from './vitals'
 
 inject()
 
-reportWebVitals(sendToAnalytics)
+reportWebVitals(sendToVercelAnalytics)
 
 createApp(App)
     .use(VueGtag, {
