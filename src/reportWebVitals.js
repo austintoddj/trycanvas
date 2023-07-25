@@ -2,7 +2,7 @@ import { onCLS, onFID, onFCP, onLCP, onTTFB } from 'web-vitals'
 
 import { sendToAnalytics } from './vitals'
 
-export function reportWebVitals(options) {
+function reportWebVitals(options) {
     try {
         onFID(metric => sendToAnalytics(metric, options))
         onTTFB(metric => sendToAnalytics(metric, options))
