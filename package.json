@@ -18,14 +18,14 @@
         "@heroicons/vue": "^2.0.17",
         "@tailwindcss/forms": "^0.5.3",
         "@tailwindcss/typography": "^0.5.9",
-        "@vitejs/plugin-vue": "^4.1.0",
-        "autoprefixer": "^10.4.14",
+        "@vitejs/plugin-vue": "^4.3.4",
+        "autoprefixer": "^10.4.15",
         "eslint": "^8.31",
         "eslint-config-prettier": "^9.0",
         "eslint-plugin-vue": "^9.8",
-        "postcss": "^8.4.23",
+        "postcss": "^8.4.29",
         "prettier": "^3.0",
         "tailwindcss": "^3.3.2",
-        "vite": "^4.3.2"
+        "vite": "^4.4.9"
     }
 }
