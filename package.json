@@ -11,7 +11,6 @@
     "dependencies": {
         "@vercel/analytics": "^1.0.1",
         "vue": "^3.2.47",
-        "vue-gtag": "^2.0.1",
         "web-vitals": "^3.4.0"
     },
     "devDependencies": {
@@ -22,7 +21,7 @@
         "@vitejs/plugin-vue": "^4.3.4",
         "autoprefixer": "^10.4.15",
         "eslint": "^8.31",
-        "eslint-config-prettier": "^8.7",
+        "eslint-config-prettier": "^9.0",
         "eslint-plugin-vue": "^9.8",
         "postcss": "^8.4.29",
         "prettier": "^3.0",
