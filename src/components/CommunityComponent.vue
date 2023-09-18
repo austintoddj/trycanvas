@@ -4,16 +4,16 @@
             As featured in the community
         </h2>
         <div
-            class="mx-auto mt-10 grid max-w-lg grid-cols-1 gap-x-8 lg:grid-cols-3 items-center gap-y-10 sm:max-w-xl lg:mx-0 lg:max-w-none"
+            class="mx-auto mt-10 grid max-w-lg grid-cols-1 items-center gap-x-8 gap-y-10 sm:max-w-xl lg:mx-0 lg:max-w-none lg:grid-cols-3"
         >
             <a
                 href="https://laravel-news.com/canvas-a-laravel-publishing-platform"
-                class="flex items-center mx-auto"
+                class="mx-auto flex items-center"
                 target="_blank"
             >
                 <span class="sr-only">Laravel News</span>
                 <svg
-                    class="w-8 h-8"
+                    class="h-8 w-8"
                     fill="none"
                     height="132"
                     viewBox="0 0 134 132"
@@ -69,14 +69,14 @@
                     ></path>
                 </svg>
                 <p
-                    class="text-white ml-2 mr-4 text-xl font-bold leading-normal"
+                    class="ml-2 mr-4 text-xl font-bold leading-normal text-white"
                 >
                     Laravel News
                 </p>
             </a>
 
             <a
-                class="flex items-center mx-auto"
+                class="mx-auto flex items-center"
                 href="https://www.producthunt.com/products/canvas"
                 target="_blank"
             >
@@ -99,7 +99,7 @@
                     </g>
                 </svg>
                 <p
-                    class="text-white ml-2 mr-4 text-xl font-bold leading-normal"
+                    class="ml-2 mr-4 text-xl font-bold leading-normal text-white"
                 >
                     Product Hunt
                 </p>
@@ -107,7 +107,7 @@
 
             <a
                 href="https://podcast.laravel-news.com/109"
-                class="text-white text-xl text-center font-bold"
+                class="text-center text-xl font-bold text-white"
                 target="_blank"
                 >Laravel News Podcast</a
             >
