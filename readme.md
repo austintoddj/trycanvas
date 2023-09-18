@@ -1,23 +1,23 @@
-<p align="center">
-    <a href="https://trycanvas.app">
-        <img src="https://repository-images.githubusercontent.com/657770599/7b95f0a8-69ea-4c12-8104-07208f5217af" alt="Homepage for trycanvas.app">
-    </a>
-</p>
+# trycanvas.app
 
-## Source for trycanvas.app
+> **Note:** This repository contains the source code powering trycanvas.app. If you want to use Canvas, visit the [main repository](https://github.com/austintoddj/canvas).
 
-To run the project locally, first install the dependencies:
+## Introduction
+
+The trycanvas.app site is a [Vite](https://vitejs.dev) scaffolded project hosted on [Vercel](https://vercel.com).
+
+## System Requirements
+
+- Node >= 16.18
+- NPM >= 9.6
+
+## Developing
 
 ```bash
 npm install
-```
-
-Next, run the development server:
-
-```bash
-npm run dev
+npm run dev # dev server at http://localhost:5173
 ```
 
 ## License
 
-Canvas is open-sourced software licensed under the [MIT license](license).
+This project is open-sourced software licensed under the [MIT license](license).
