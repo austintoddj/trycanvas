@@ -1,6 +1,5 @@
 version: 2
 updates:
-  # Maintain dependencies for npm
   - package-ecosystem: 'npm'
     directory: '/'
     target-branch: 'develop'
