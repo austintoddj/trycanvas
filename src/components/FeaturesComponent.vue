@@ -150,15 +150,15 @@
 </template>
 
 <script setup>
-import { ChartBarIcon, TagIcon, PhotoIcon } from '@heroicons/vue/24/outline'
 import {
-    LockClosedIcon,
-    MoonIcon,
+    CalendarDaysIcon,
     EnvelopeIcon,
     LanguageIcon,
-    CalendarDaysIcon,
+    LockClosedIcon,
+    MoonIcon,
     RectangleGroupIcon
 } from '@heroicons/vue/20/solid'
+import { ChartBarIcon, PhotoIcon, TagIcon } from '@heroicons/vue/24/outline'
 
 const secondaryFeatures = [
     {

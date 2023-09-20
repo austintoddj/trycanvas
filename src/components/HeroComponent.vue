@@ -216,8 +216,8 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from 'vue'
 import { ChevronRightIcon } from '@heroicons/vue/20/solid'
+import { ref, watchEffect } from 'vue'
 
 const repo = ref(null)
 const release = ref(null)
