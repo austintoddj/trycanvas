@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-import { ref, watchEffect, defineComponent, h } from 'vue'
+import { defineComponent, h, ref, watchEffect } from 'vue'
 
 const license = ref(null)
 

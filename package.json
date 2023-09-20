@@ -5,8 +5,8 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "lint": "eslint . --ignore-path .gitignore --fix",
-        "format": "prettier . --write",
+        "lint": "eslint --ext .js,.vue .",
+        "format": "prettier --write .",
         "prepare": "husky install"
     },
     "dependencies": {
