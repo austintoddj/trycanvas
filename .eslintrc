@@ -1,21 +1,11 @@
 {
-    "root": true,
-    "env": {
-        "node": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:vue/vue3-recommended",
-        "prettier"
-    ],
-    "plugins": ["unused-imports", "simple-import-sort", "import"],
-    "rules": {
-        "no-unused-vars": "error",
-        "no-console": "error",
-        "simple-import-sort/imports": "error",
-        "simple-import-sort/exports": "error",
-        "import/first": "error",
-        "import/newline-after-import": "error",
-        "import/no-duplicates": "error"
-    }
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:vue/vue3-recommended", "prettier"],
+  "rules": {
+    "no-unused-vars": "error",
+    "no-console": "error"
+  }
 }
