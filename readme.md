@@ -8,8 +8,8 @@ The trycanvas.app site is a [Vite](https://vitejs.dev) scaffolded project hosted
 
 ## System Requirements
 
--   Node >= 16.18
--   NPM >= 9.6
+- Node >= 16.18
+- NPM >= 9.6
 
 ## Developing
 

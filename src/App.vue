@@ -1,14 +1,14 @@
 <template>
-    <div class="bg-gray-900">
-        <main>
-            <HeroComponent />
-            <CommunityComponent />
-            <FeaturesComponent />
-            <StatsComponent />
-            <CTAComponent />
-        </main>
-        <FooterComponent />
-    </div>
+  <div class="bg-gray-900">
+    <main>
+      <HeroComponent />
+      <CommunityComponent />
+      <FeaturesComponent />
+      <StatsComponent />
+      <CTAComponent />
+    </main>
+    <FooterComponent />
+  </div>
 </template>
 
 <script setup>
