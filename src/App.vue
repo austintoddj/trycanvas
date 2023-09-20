@@ -12,8 +12,8 @@
 </template>
 
 <script setup>
-import CommunityComponent from '@/components/CommunityComponent.vue'
 import CTAComponent from '@/components/CTAComponent.vue'
+import CommunityComponent from '@/components/CommunityComponent.vue'
 import FeaturesComponent from '@/components/FeaturesComponent.vue'
 import FooterComponent from '@/components/FooterComponent.vue'
 import HeroComponent from '@/components/HeroComponent.vue'
