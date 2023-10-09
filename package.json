@@ -10,7 +10,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.0.1",
+    "@vercel/analytics": "^1.1.0",
     "vue": "^3.2.47",
     "web-vitals": "^3.5.0"
   },
