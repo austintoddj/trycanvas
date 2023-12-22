@@ -9,6 +9,7 @@
     </main>
     <FooterComponent />
   </div>
+  <SpeedInsights />
 </template>
 
 <script setup>
@@ -18,4 +19,5 @@ import FeaturesComponent from '@/components/FeaturesComponent.vue'
 import FooterComponent from '@/components/FooterComponent.vue'
 import HeroComponent from '@/components/HeroComponent.vue'
 import StatsComponent from '@/components/StatsComponent.vue'
+import { SpeedInsights } from '@vercel/speed-insights/vue'
 </script>
