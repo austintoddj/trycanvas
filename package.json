@@ -13,7 +13,7 @@
     "@vercel/analytics": "^1.1.0",
     "@vercel/speed-insights": "^1.0.2",
     "vue": "^3.3.7",
-    "web-vitals": "^3.5.0"
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@headlessui/vue": "^1.7.13",
