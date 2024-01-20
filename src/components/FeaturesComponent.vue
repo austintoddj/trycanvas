@@ -61,7 +61,7 @@
             >
               <TagIcon class="h-6 w-6 text-white" aria-hidden="true" />
             </div>
-            SEO Optimization
+            SEO optimization
           </dt>
           <dd
             class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-300"
