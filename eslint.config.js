@@ -9,7 +9,7 @@ export default [
   {
     files: ['**/*.vue'],
     languageOptions: {
-      parser: vueParser, // Correct parser import
+      parser: vueParser,
       ecmaVersion: 'latest',
       sourceType: 'module'
     },
@@ -17,8 +17,8 @@ export default [
       vue
     },
     rules: {
-      ...prettierConfig.rules, // Prettier rules
-      ...vue.configs['vue3-recommended'].rules, // Vue recommended rules
+      ...prettierConfig.rules,
+      ...vue.configs['vue3-recommended'].rules,
       'no-unused-vars': 'error',
       'no-console': 'error'
     }
