@@ -21,10 +21,7 @@
           class="mt-8 text-xs leading-5 text-gray-400 md:order-1 md:mt-0"
         >
           Created by
-          <a
-            class="font-bold"
-            href="https://twitter.com/austintoddj"
-            target="_blank"
+          <a class="font-bold" href="https://x.com/austintoddj" target="_blank"
             >Todd Austin</a
           >. Released under the
           <a class="font-bold" :href="license.html_url" target="_blank"
