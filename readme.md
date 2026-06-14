@@ -25,6 +25,7 @@ The development app runs at `http://localhost:3000` by default.
 ```bash
 npm run typecheck
 npm run lint
+npm run format
 ```
 
 ## License

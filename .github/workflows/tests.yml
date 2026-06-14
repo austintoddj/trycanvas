@@ -7,8 +7,13 @@ on:
   pull_request:
     branches: [main, develop]
 
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  ci:
+  e2e:
+    name: E2E Tests (Node ${{ matrix.node-version }})
     runs-on: ubuntu-latest
 
     strategy:
