@@ -1,13 +1,9 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-    hoverOnlyWhenSupported: true
-  },
-  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+const config = {
+  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {}
-  },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')]
+  }
 }
+
+export default config

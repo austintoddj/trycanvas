@@ -18,3 +18,10 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+/public/robots.txt
+/public/sitemap.xml
+/public/sitemap-*.xml
+/playwright-report/
+/test-results/
+.auth/
+.next

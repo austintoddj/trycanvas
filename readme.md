@@ -4,18 +4,27 @@
 
 ## Introduction
 
-The trycanvas.app site is a [Vite](https://vitejs.dev) scaffolded project hosted on [Vercel](https://vercel.com).
+This is a [Next.js](https://nextjs.org) App Router project that ports the original Vue/Vite marketing site to TypeScript React components.
 
 ## System Requirements
 
-- Node >= 16.18
-- NPM >= 9.6
+- Node >= 18.18
+- NPM >= 9
 
 ## Developing
 
 ```bash
 npm install
-npm run dev # dev server at http://localhost:5173
+npm run dev
+```
+
+The development app runs at `http://localhost:3000` by default.
+
+## Quality Checks
+
+```bash
+npm run typecheck
+npm run lint
 ```
 
 ## License
