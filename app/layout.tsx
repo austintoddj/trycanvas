@@ -11,6 +11,7 @@ import {
   socialDescription,
   socialImage
 } from '@/lib/seo'
+import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 
@@ -161,6 +162,7 @@ export default function RootLayout({
       </head>
       <body className="flex min-h-full flex-col bg-white font-sans text-canvas-900 selection:bg-canvas-900 selection:text-white dark:bg-canvas-950 dark:text-canvas-50">
         {children}
+        <Analytics />
       </body>
     </html>
   )
