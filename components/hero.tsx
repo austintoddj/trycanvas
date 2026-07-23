@@ -72,7 +72,7 @@ export function Hero({ latestVersion, latestReleaseUrl }: HeroProps) {
             href="https://github.com/austintoddj/canvas"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-canvas-200 bg-white px-5 py-2.5 text-sm font-medium text-canvas-700 transition-all hover:bg-canvas-50 dark:border-canvas-700 dark:bg-canvas-900 dark:text-canvas-200 dark:hover:bg-canvas-800"
+            className="inline-flex items-center gap-2 rounded-full border border-canvas-200 bg-white px-5 py-2.5 text-sm font-medium text-canvas-700 transition-all hover:scale-[1.02] hover:bg-canvas-50 active:scale-[0.98] dark:border-canvas-700 dark:bg-canvas-900 dark:text-canvas-200 dark:hover:bg-canvas-800"
           >
             <GitHubIcon className="h-4 w-4" />
             View on GitHub
