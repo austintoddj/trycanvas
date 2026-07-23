@@ -1,5 +1,4 @@
 import { GitHubIcon, QuillIcon } from './icons'
-import { ThemeToggle } from './theme-toggle'
 
 export function Header() {
   return (
@@ -37,18 +36,15 @@ export function Header() {
           </a>
         </nav>
 
-        <div className="flex items-center gap-3">
-          <ThemeToggle />
-          <a
-            href="https://github.com/austintoddj/canvas"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-transparent bg-canvas-900 px-3.5 py-1.5 text-[13px] font-medium text-white transition-colors hover:bg-canvas-800 dark:border-canvas-700 dark:bg-canvas-800 dark:text-canvas-50 dark:hover:bg-canvas-700"
-          >
-            <GitHubIcon className="h-3.5 w-3.5" />
-            Star
-          </a>
-        </div>
+        <a
+          href="https://github.com/austintoddj/canvas"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-full border border-transparent bg-canvas-900 px-3.5 py-1.5 text-[13px] font-medium text-white transition-colors hover:bg-canvas-800 dark:border-canvas-700 dark:bg-canvas-800 dark:text-canvas-50 dark:hover:bg-canvas-700"
+        >
+          <GitHubIcon className="h-3.5 w-3.5" />
+          Star
+        </a>
       </div>
     </header>
   )

@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (@media (prefers-color-scheme: dark));
 
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -51,9 +51,11 @@ html {
   color: #fafafa;
 }
 
-.dark ::selection {
-  background: #fafafa;
-  color: #18181b;
+@media (prefers-color-scheme: dark) {
+  ::selection {
+    background: #fafafa;
+    color: #18181b;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -70,8 +72,10 @@ html {
   border-radius: 4px;
 }
 
-.dark ::-webkit-scrollbar-thumb {
-  background: #3f3f46;
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+  }
 }
 
 .code-block {
@@ -85,8 +89,10 @@ html {
   background-size: 48px 48px;
 }
 
-.dark .bg-grid {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+@media (prefers-color-scheme: dark) {
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
 }

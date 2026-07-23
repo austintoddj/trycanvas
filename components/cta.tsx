@@ -16,7 +16,7 @@ export function Cta() {
               Ready when you are. Install the package, grant yourself access,
               and open <code className="font-mono text-[13px]">/canvas</code>.
             </p>
-            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="flex flex-row flex-wrap items-center justify-center gap-3">
               <a
                 href="#install"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-canvas-900 transition-all hover:bg-canvas-100"

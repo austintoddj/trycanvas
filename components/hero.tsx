@@ -58,7 +58,7 @@ export function Hero({ latestVersion, latestReleaseUrl }: HeroProps) {
         </p>
 
         <div
-          className="flex animate-fade-in-up flex-col items-center justify-center gap-3 sm:flex-row"
+          className="flex animate-fade-in-up flex-row flex-wrap items-center justify-center gap-3"
           style={{ animationDelay: '0.15s' }}
         >
           <a

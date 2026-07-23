@@ -162,31 +162,21 @@ test.describe('Homepage', () => {
     await expect(page.getByText(/live demo/i)).toHaveCount(0)
   })
 
-  test('should follow system light preference and allow theme toggle', async ({
-    page
-  }) => {
+  test('should follow system light preference', async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'light' })
     await page.goto('/')
-    await expect(page.locator('html')).not.toHaveClass(/dark/)
     await expect(page.locator('img[src*="editor.png"]').first()).toBeVisible()
-
-    const toggle = page.getByRole('button', { name: 'Toggle theme' })
-    await expect(toggle).toBeVisible()
-    await toggle.click()
-    await expect(page.locator('html')).toHaveClass(/dark/)
     await expect(
       page.locator('img[src*="editor-dark.png"]').first()
-    ).toBeVisible()
+    ).toBeHidden()
   })
 
-  test('should follow system dark preference on first visit', async ({
-    page
-  }) => {
+  test('should follow system dark preference', async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'dark' })
     await page.goto('/')
-    await expect(page.locator('html')).toHaveClass(/dark/)
     await expect(
       page.locator('img[src*="editor-dark.png"]').first()
     ).toBeVisible()
+    await expect(page.locator('img[src*="editor.png"]').first()).toBeHidden()
   })
 })

@@ -91,17 +91,18 @@ export function Install() {
               Requirements
             </h3>
             <p className="text-[13px] leading-relaxed text-canvas-600 dark:text-canvas-400">
-              Laravel 11+ and PHP 8.2+. The current major is a clean break from
-              prior majors—see the{' '}
+              PHP 8.3+, Laravel 12 or 13, and working authentication for the
+              guard Canvas uses. The current major is a clean break from prior
+              majors—see the{' '}
               <a
-                href="https://github.com/austintoddj/canvas/blob/v7/.github/UPGRADE.md"
+                href="https://github.com/austintoddj/canvas/blob/master/.github/UPGRADE.md"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline underline-offset-2 transition-colors hover:text-canvas-900 dark:hover:text-white"
               >
                 upgrade guide
               </a>{' '}
-              before migrating from v6.
+              before migrating from an older major.
             </p>
           </div>
         </div>
