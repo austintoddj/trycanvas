@@ -27,18 +27,27 @@ export function ProductShowcase() {
               <div className="h-2.5 w-2.5 rounded-full bg-canvas-300 dark:bg-canvas-700" />
             </div>
             <span className="ml-2 text-[12px] font-medium text-canvas-500">
-              canvas — post editor
+              yourapp.test/canvas
             </span>
           </div>
           <div className="relative bg-canvas-100 dark:bg-canvas-950">
             <Image
               src="/editor.png"
               alt="Canvas post editor with a clean writing surface and minimal chrome"
-              width={2592}
-              height={1512}
+              width={2952}
+              height={1760}
               priority
               sizes="(min-width: 1024px) 64rem, 100vw"
-              className="h-auto w-full"
+              className="h-auto w-full dark:hidden"
+            />
+            <Image
+              src="/editor-dark.png"
+              alt="Canvas post editor with a clean writing surface and minimal chrome"
+              width={2952}
+              height={1760}
+              priority
+              sizes="(min-width: 1024px) 64rem, 100vw"
+              className="hidden h-auto w-full dark:block"
             />
           </div>
         </div>

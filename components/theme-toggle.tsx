@@ -1,7 +1,7 @@
 'use client'
 
 import { MoonIcon, SunIcon } from './icons'
-import { useSyncExternalStore } from 'react'
+import { useEffect, useSyncExternalStore } from 'react'
 
 type Theme = 'light' | 'dark'
 
@@ -20,30 +20,37 @@ function subscribe(onStoreChange: () => void) {
     attributeFilter: ['class']
   })
 
-  const media = window.matchMedia('(prefers-color-scheme: dark)')
-  const onMediaChange = () => {
-    if (!localStorage.getItem('theme')) {
-      document.documentElement.classList.toggle('dark', media.matches)
-      onStoreChange()
-    }
-  }
-  media.addEventListener('change', onMediaChange)
-
   return () => {
     observer.disconnect()
-    media.removeEventListener('change', onMediaChange)
   }
+}
+
+function applyTheme(theme: Theme) {
+  document.documentElement.classList.toggle('dark', theme === 'dark')
 }
 
 export function ThemeToggle() {
   useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+
+  // Follow OS preference until the visitor explicitly chooses a theme.
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-color-scheme: dark)')
+
+    function onSystemThemeChange(event: MediaQueryListEvent) {
+      if (localStorage.getItem('theme')) return
+      applyTheme(event.matches ? 'dark' : 'light')
+    }
+
+    media.addEventListener('change', onSystemThemeChange)
+    return () => media.removeEventListener('change', onSystemThemeChange)
+  }, [])
 
   function toggleTheme() {
     const next: Theme = document.documentElement.classList.contains('dark')
       ? 'light'
       : 'dark'
     localStorage.setItem('theme', next)
-    document.documentElement.classList.toggle('dark', next === 'dark')
+    applyTheme(next)
   }
 
   return (

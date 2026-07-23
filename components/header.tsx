@@ -12,9 +12,6 @@ export function Header() {
           <span className="text-[15px] font-semibold tracking-tight">
             Canvas
           </span>
-          <span className="rounded-full bg-canvas-100 px-1.5 py-0.5 text-[11px] font-medium tracking-wide text-canvas-600 dark:bg-canvas-800 dark:text-canvas-300">
-            7
-          </span>
         </a>
 
         <nav className="hidden items-center gap-8 text-[13px] font-medium text-canvas-600 sm:flex dark:text-canvas-400">
@@ -46,7 +43,7 @@ export function Header() {
             href="https://github.com/austintoddj/canvas"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full bg-canvas-900 px-3.5 py-1.5 text-[13px] font-medium text-white transition-colors hover:bg-canvas-800 dark:bg-white dark:text-canvas-900 dark:hover:bg-canvas-100"
+            className="inline-flex items-center gap-1.5 rounded-full border border-transparent bg-canvas-900 px-3.5 py-1.5 text-[13px] font-medium text-white transition-colors hover:bg-canvas-800 dark:border-canvas-700 dark:bg-canvas-800 dark:text-canvas-50 dark:hover:bg-canvas-700"
           >
             <GitHubIcon className="h-3.5 w-3.5" />
             Star

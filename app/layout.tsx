@@ -1,4 +1,16 @@
 import './globals.css'
+import {
+  creator,
+  jsonLd,
+  serializeJsonLd,
+  siteDescription,
+  siteKeywords,
+  siteName,
+  siteTitle,
+  siteUrl,
+  socialDescription,
+  socialImage
+} from '@/lib/seo'
 import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 
@@ -14,16 +26,37 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap'
 })
 
-const siteTitle = 'Canvas — Publishing for Laravel apps'
-const siteDescription =
-  'Canvas is an open-source publishing layer for Laravel. Keep your authentication, install the package, and write from a modern admin with Tiptap, media, analytics, scheduling, and optional AI.'
-
 export const metadata: Metadata = {
-  metadataBase: new URL('https://trycanvas.app'),
-  title: siteTitle,
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteTitle,
+    template: `%s · ${siteName}`
+  },
   description: siteDescription,
+  applicationName: siteName,
+  authors: [{ name: creator.name, url: creator.xUrl }],
+  creator: creator.name,
+  publisher: siteName,
+  keywords: [...siteKeywords],
+  category: 'technology',
   alternates: {
-    canonical: 'https://trycanvas.app'
+    canonical: siteUrl
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      'index': true,
+      'follow': true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false
   },
   icons: {
     icon: [
@@ -53,23 +86,40 @@ export const metadata: Metadata = {
         media: '(prefers-color-scheme: dark)'
       }
     ],
-    apple: [{ url: '/apple-touch-icon.png' }]
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }]
   },
   openGraph: {
     title: siteTitle,
-    description:
-      'A guest publishing layer for Laravel. Your auth, your domain, a quiet admin at /canvas.',
-    url: 'https://trycanvas.app',
-    siteName: 'Canvas',
-    images: ['/social.png'],
-    type: 'website'
+    description: socialDescription,
+    url: siteUrl,
+    siteName,
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: socialImage.url,
+        width: socialImage.width,
+        height: socialImage.height,
+        alt: socialImage.alt,
+        type: socialImage.type
+      }
+    ]
   },
   twitter: {
     card: 'summary_large_image',
     title: siteTitle,
-    description:
-      'A guest publishing layer for Laravel. Your auth, your domain, a quiet admin at /canvas.',
-    images: ['/social.png']
+    description: socialDescription,
+    site: creator.x,
+    creator: creator.x,
+    images: [
+      {
+        url: socialImage.url,
+        width: socialImage.width,
+        height: socialImage.height,
+        alt: socialImage.alt,
+        type: socialImage.type
+      }
+    ]
   }
 }
 
@@ -84,12 +134,9 @@ const themeInitScript = `
 (() => {
   try {
     const stored = localStorage.getItem('theme');
-    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (stored === 'dark' || (!stored && systemDark)) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = stored === 'dark' || (stored !== 'light' && prefersDark);
+    document.documentElement.classList.toggle('dark', isDark);
   } catch {}
 })();
 `
@@ -107,6 +154,10 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
+        />
       </head>
       <body className="flex min-h-full flex-col bg-white font-sans text-canvas-900 selection:bg-canvas-900 selection:text-white dark:bg-canvas-950 dark:text-canvas-50">
         {children}

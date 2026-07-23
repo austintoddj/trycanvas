@@ -1,7 +1,4 @@
-import type { SiteStats } from '@/lib/stats';
-
-
-
+import type { SiteStats } from '@/lib/stats'
 
 type SocialProofProps = {
   stats: SiteStats
@@ -38,7 +35,9 @@ export function SocialProof({ stats }: SocialProofProps) {
             Years in the Laravel ecosystem
           </h2>
           <p className="text-[15px] leading-relaxed text-canvas-600 dark:text-canvas-400">
-            Canvas was made for developers, by developers. Built for the most popular PHP framework on the market today, you&#39;ll be in good company.
+            Canvas was made for developers, by developers. Built for the most
+            popular PHP framework on the market today, you&#39;ll be in good
+            company.
           </p>
         </div>
 

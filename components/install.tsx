@@ -7,7 +7,10 @@ const commands = [
     type: 'command' as const,
     text: 'php artisan canvas:make-admin you@example.com'
   },
-  { type: 'comment' as const, text: '# Sign in to your app, then visit /canvas' }
+  {
+    type: 'comment' as const,
+    text: '# Sign in to your app, then visit /canvas'
+  }
 ]
 
 export function Install() {
@@ -22,12 +25,9 @@ export function Install() {
             Install like any other package
           </h2>
           <p className="text-[15px] leading-relaxed text-canvas-600 dark:text-canvas-400">
-            Composer, Artisan, and your existing login. Canvas stores author
-            profiles and access in{' '}
-            <code className="rounded bg-canvas-100 px-1 font-mono text-[12px] dark:bg-canvas-800">
-              canvas_users
-            </code>
-            —it does not create host accounts or own authentication.
+            Composer, Artisan, and your existing login. Canvas never creates
+            host accounts or owns authentication—it plugs into the guard you
+            already use.
           </p>
         </div>
 
@@ -91,8 +91,8 @@ export function Install() {
               Requirements
             </h3>
             <p className="text-[13px] leading-relaxed text-canvas-600 dark:text-canvas-400">
-              Laravel 11+ and PHP 8.2+. Canvas 7 is a clean break from prior
-              majors—see the{' '}
+              Laravel 11+ and PHP 8.2+. The current major is a clean break from
+              prior majors—see the{' '}
               <a
                 href="https://github.com/austintoddj/canvas/blob/v7/.github/UPGRADE.md"
                 target="_blank"

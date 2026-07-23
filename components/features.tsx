@@ -18,37 +18,37 @@ const features: {
   {
     title: 'A quiet writing surface',
     description:
-      'Tiptap with a fixed toolbar—no floating chrome. Focus mode, tables, task lists, syntax-highlighted code, and paste-to-embed for YouTube and more.',
+      'Draft without distraction. Focus mode, headings, lists, tables, code blocks, and embeds keep you in flow from first line to final polish.',
     icon: EditorIcon
   },
   {
-    title: 'Drafts, schedule, and safe edits',
+    title: 'Draft, schedule, revise safely',
     description:
-      'Ship on a schedule, or keep live posts stable while you revise privately. Promote when ready; discard when you’re not.',
+      'Save work-in-progress, schedule when a post goes live, and edit published pieces privately—then promote when ready or discard the draft.',
     icon: ScheduleIcon
   },
   {
-    title: 'AI you bring yourself',
+    title: 'AI in the draft, not the way',
     description:
-      'Optional rewrite and SEO suggestions via your own Grok, ChatGPT, or Claude keys. Improve, fix grammar, shorten, expand—or write a custom instruction.',
+      'Tighten a paragraph, fix grammar, expand a rough idea, or improve an SEO title—right where you’re already writing, with your own API keys.',
     icon: AiIcon
   },
   {
-    title: 'Media that stays in place',
+    title: 'Media without the detour',
     description:
-      'Uploads, a justified media library, and Unsplash when you connect it. Featured images and assets without leaving the editor.',
+      'Upload images, set a featured image, and pull stock photos from Unsplash without leaving the post you’re working on.',
     icon: MediaIcon
   },
   {
-    title: 'Traffic you can actually use',
+    title: 'Traffic you can act on',
     description:
-      'Thirty-day views and visitors, top posts, referrers, and per-post stats. Optional weekly digests in the author’s language and timezone.',
+      'See views, visitors, top posts, and referrers so you know what’s landing. Optional weekly digests keep authors in the loop.',
     icon: AnalyticsIcon
   },
   {
-    title: 'Your auth, three roles',
+    title: 'Access that matches your team',
     description:
-      'Contributor, Editor, and Admin live in canvas_users. Canvas never owns login—your guard, your user model, your domain.',
+      'Writers draft, editors publish, admins configure—using the login you already have. No second accounts or separate user system.',
     icon: RolesIcon
   }
 ]
@@ -62,17 +62,15 @@ export function Features() {
       <div className="mx-auto max-w-5xl px-6">
         <div className="mb-16 max-w-2xl">
           <h2 className="mb-4 text-2xl font-semibold tracking-tight text-canvas-900 sm:text-3xl dark:text-white">
-            Built for people who publish
+            Everything you need.
             <br />
             <span className="text-canvas-500 dark:text-canvas-400">
-              inside real Laravel apps.
+              Nothing you don’t.
             </span>
           </h2>
           <p className="text-[15px] leading-relaxed text-canvas-600 dark:text-canvas-400">
-            Canvas 7 is a full rewrite of the admin experience: React 19, Vite,
-            and Tiptap on the frontend; first-class Illuminate primitives on the
-            backend. Tags and topics, media, integrations, and access control—
-            without turning your app into a CMS.
+            Write, organize, ship, and learn—publishing tools that fit how teams
+            actually work, without turning your Laravel app into a CMS.
           </p>
         </div>
 

@@ -5,23 +5,24 @@ import { Header } from '@/components/header'
 import { Hero } from '@/components/hero'
 import { Install } from '@/components/install'
 import { ProductShowcase } from '@/components/product-showcase'
-import { Quote } from '@/components/quote'
 import { SocialProof } from '@/components/social-proof'
-import { getSiteStats } from '@/lib/stats'
+import { getLatestRelease, getSiteStats } from '@/lib/stats'
 
 export default async function Home() {
-  const stats = await getSiteStats()
+  const [stats, release] = await Promise.all([
+    getSiteStats(),
+    getLatestRelease()
+  ])
 
   return (
     <>
       <Header />
       <main>
-        <Hero />
+        <Hero latestVersion={release?.tag} latestReleaseUrl={release?.url} />
         <ProductShowcase />
         <Features />
         <Install />
         <SocialProof stats={stats} />
-        <Quote />
         <Cta />
       </main>
       <Footer />

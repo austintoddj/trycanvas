@@ -72,7 +72,7 @@ export function Footer() {
             </a>
             .
           </p>
-          <p>A publishing layer for Laravel applications.</p>
+          <p>A publishing platform for Laravel applications.</p>
         </div>
       </div>
     </footer>
