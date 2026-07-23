@@ -4,11 +4,11 @@ export const siteUrl = 'https://trycanvas.app'
 
 export const siteName = 'Canvas'
 
-export const siteTitle = 'Canvas — Publishing for Laravel apps'
+export const siteTitle = 'Canvas — Publishing on your own terms'
 
 /** Primary meta description (SERP). Keep under ~160 chars where practical. */
 export const siteDescription =
-  'Canvas is an open-source publishing platform for Laravel. Keep your authentication, install the package, and write from a modern admin with Tiptap, media, analytics, scheduling, and optional AI.'
+  'Canvas is a powerful tool for Laravel apps that makes it easy to write, edit, and brand your work with a range of publishing tools.'
 
 /**
  * Shorter card copy for Open Graph / Twitter (link previews prefer ~100–120 chars).
