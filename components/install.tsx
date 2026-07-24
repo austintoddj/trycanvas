@@ -1,6 +1,10 @@
 import { InstallTerminal } from './install-terminal'
 
-export function Install() {
+type InstallProps = {
+  packageVersion?: string | null
+}
+
+export function Install({ packageVersion }: InstallProps) {
   return (
     <section
       id="install"
@@ -18,7 +22,7 @@ export function Install() {
           </p>
         </div>
 
-        <InstallTerminal />
+        <InstallTerminal packageVersion={packageVersion} />
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           <div className="rounded-2xl border border-canvas-200 bg-white p-5 dark:border-canvas-800 dark:bg-canvas-900/50">

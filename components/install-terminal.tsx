@@ -2,23 +2,39 @@
 
 import { ReplayIcon } from './icons'
 import {
+  FALLBACK_PACKAGE_VERSION,
   type TerminalLine,
   getCompletedTerminalLines,
-  installScript
+  getInstallScript
 } from '@/lib/install-script'
 import {
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
   useSyncExternalStore
 } from 'react'
 
-const CHAR_MS = 30
-const AFTER_COMMAND_MS = 280
-const OUTPUT_LINE_MS = 55
-const BETWEEN_STEPS_MS = 450
-const COMMENT_MS = 200
+/** Human typing with light jitter — snappy but not robotic. */
+const CHAR_MIN_MS = 24
+const CHAR_MAX_MS = 52
+const WORD_PAUSE_MAX_MS = 70
+const HESITATION_CHANCE = 0.05
+const HESITATION_MAX_MS = 140
+
+/** Pause after the full command is typed (review, then Enter). */
+const PRE_ENTER_MS = 400
+
+/** Output stream pacing — empty lines snappier, install lines a beat longer. */
+const OUTPUT_LINE_MS = 85
+const OUTPUT_EMPTY_MS = 40
+const OUTPUT_WORK_MS = 140
+
+/** Idle on a fresh `$ ` prompt so the cursor blinks before the next type. */
+const PROMPT_IDLE_MS = 800
+
+const COMMENT_MS = 380
 
 function subscribeReducedMotion(onStoreChange: () => void) {
   const media = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -52,7 +68,44 @@ function wait(ms: number, isActive: () => boolean) {
   })
 }
 
-export function InstallTerminal() {
+function typeDelayForChar(char: string): number {
+  let delay = CHAR_MIN_MS + Math.random() * (CHAR_MAX_MS - CHAR_MIN_MS)
+
+  if (char === ' ') {
+    delay += Math.random() * WORD_PAUSE_MAX_MS
+  } else if (char === '/' || char === ':' || char === '@') {
+    delay += 15 + Math.random() * 30
+  }
+
+  if (Math.random() < HESITATION_CHANCE) {
+    delay += 60 + Math.random() * HESITATION_MAX_MS
+  }
+
+  return delay
+}
+
+function outputDelayForLine(text: string): number {
+  if (text === '') return OUTPUT_EMPTY_MS
+  if (
+    text.includes('Downloading') ||
+    text.includes('Installing') ||
+    text.includes('Extracting') ||
+    text.includes('Running migrations') ||
+    text.includes('Updating dependencies')
+  ) {
+    return OUTPUT_WORK_MS
+  }
+  return OUTPUT_LINE_MS
+}
+
+type InstallTerminalProps = {
+  /** GitHub/Packagist release tag, e.g. "v6.0.56" or "v7.0.2" */
+  packageVersion?: string | null
+}
+
+export function InstallTerminal({ packageVersion }: InstallTerminalProps) {
+  const version = packageVersion?.trim() || FALLBACK_PACKAGE_VERSION
+  const script = useMemo(() => getInstallScript(version), [version])
   const reducedMotion = usePrefersReducedMotion()
   const containerRef = useRef<HTMLDivElement>(null)
   const bodyRef = useRef<HTMLDivElement>(null)
@@ -61,7 +114,9 @@ export function InstallTerminal() {
   const [status, setStatus] = useState<'idle' | 'playing' | 'complete'>('idle')
   const [showCursor, setShowCursor] = useState(false)
 
-  const displayLines = reducedMotion ? getCompletedTerminalLines() : lines
+  const displayLines = reducedMotion
+    ? getCompletedTerminalLines(version)
+    : lines
   const displayStatus = reducedMotion ? 'complete' : status
   const displayCursor = reducedMotion ? false : showCursor
 
@@ -79,7 +134,7 @@ export function InstallTerminal() {
     setStatus('playing')
     setShowCursor(true)
 
-    for (const step of installScript) {
+    for (const step of script) {
       if (!isActive()) return
 
       if (step.kind === 'comment') {
@@ -89,21 +144,26 @@ export function InstallTerminal() {
         continue
       }
 
+      // Fresh prompt: `$ ` with a blinking cursor before typing begins.
       setShowCursor(true)
       setLines(prev => [...prev, { type: 'command', text: '' }])
+      await wait(PROMPT_IDLE_MS, isActive)
+      if (!isActive()) return
 
       for (let i = 1; i <= step.input.length; i++) {
         if (!isActive()) return
         const partial = step.input.slice(0, i)
+        const char = step.input[i - 1] ?? ''
         setLines(prev => {
           const next = [...prev]
           next[next.length - 1] = { type: 'command', text: partial }
           return next
         })
-        await wait(CHAR_MS, isActive)
+        await wait(typeDelayForChar(char), isActive)
       }
 
-      await wait(AFTER_COMMAND_MS, isActive)
+      // Finished typing — hold so the cursor blinks, then “press Enter”.
+      await wait(PRE_ENTER_MS, isActive)
       if (!isActive()) return
 
       if (step.output?.length) {
@@ -111,17 +171,17 @@ export function InstallTerminal() {
         for (const text of step.output) {
           if (!isActive()) return
           setLines(prev => [...prev, { type: 'output', text }])
-          await wait(OUTPUT_LINE_MS, isActive)
+          await wait(outputDelayForLine(text), isActive)
         }
+      } else {
+        setShowCursor(false)
       }
-
-      await wait(BETWEEN_STEPS_MS, isActive)
     }
 
     if (!isActive()) return
     setShowCursor(false)
     setStatus('complete')
-  }, [])
+  }, [script])
 
   useEffect(() => {
     if (reducedMotion) {
@@ -192,10 +252,10 @@ export function InstallTerminal() {
 
       <div
         ref={bodyRef}
-        className="code-block min-h-0 flex-1 overflow-x-auto overflow-y-auto p-3 font-mono text-[12px] leading-relaxed sm:p-5 sm:text-[13px] md:p-6 md:text-[14px]"
+        className="code-block min-h-0 flex-1 overflow-y-auto overflow-x-hidden p-3 font-mono text-[12px] leading-relaxed sm:p-5 sm:text-[13px] md:p-6 md:text-[14px]"
         aria-live="polite"
       >
-        <div className="space-y-0.5">
+        <div className="min-w-0 space-y-0.5">
           {displayLines.map((line, index) => {
             const isLast = index === displayLines.length - 1
             const cursorHere =
@@ -206,7 +266,9 @@ export function InstallTerminal() {
                 <div
                   key={index}
                   className={
-                    index > 0 ? 'pt-3 text-canvas-500' : 'text-canvas-500'
+                    index > 0
+                      ? 'break-words pt-3 text-canvas-500'
+                      : 'break-words text-canvas-500'
                   }
                 >
                   {line.text}
@@ -218,7 +280,7 @@ export function InstallTerminal() {
               return (
                 <div
                   key={index}
-                  className="min-h-[1.25em] whitespace-pre text-canvas-500"
+                  className="min-h-[1.25em] whitespace-pre-wrap break-words text-canvas-500"
                 >
                   {line.text}
                 </div>
@@ -226,7 +288,10 @@ export function InstallTerminal() {
             }
 
             return (
-              <div key={index} className={index > 0 ? 'pt-2' : undefined}>
+              <div
+                key={index}
+                className={`min-w-0 break-words ${index > 0 ? 'pt-2' : ''}`}
+              >
                 <span className="select-none text-canvas-400">$ </span>
                 <span className="text-emerald-600 dark:text-emerald-400">
                   {line.text}

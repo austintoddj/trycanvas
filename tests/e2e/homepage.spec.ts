@@ -117,15 +117,18 @@ test.describe('Homepage', () => {
     await expect(page.getByText('A quiet writing surface')).toBeVisible()
     await expect(page.getByText('AI in the draft, not the way')).toBeVisible()
     await expect(page.locator('#install')).toBeVisible()
-    // Terminal types after scroll-into-view; allow the typewriter to finish the first command
+    // Terminal types after scroll-into-view; human-paced typewriter + composer output
     await page.locator('#install').scrollIntoViewIfNeeded()
     await expect(
       page.getByText('composer require austintoddj/canvas')
+    ).toBeVisible({ timeout: 30_000 })
+    await expect(
+      page.getByText(/Using version \^\d+\.\d+ for austintoddj\/canvas/)
     ).toBeVisible({ timeout: 20_000 })
     // Replay fades in only after the full sequence completes
     await expect(
       page.getByRole('button', { name: 'Replay animation' })
-    ).toBeVisible({ timeout: 30_000 })
+    ).toBeVisible({ timeout: 90_000 })
     await expect(page.getByText(/canvas_users/i)).toHaveCount(0)
   })
 

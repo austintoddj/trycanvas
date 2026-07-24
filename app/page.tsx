@@ -21,7 +21,7 @@ export default async function Home() {
         <Hero latestVersion={release?.tag} latestReleaseUrl={release?.url} />
         <ProductShowcase />
         <Features />
-        <Install />
+        <Install packageVersion={release?.tag} />
         <SocialProof stats={stats} />
         <Cta />
       </main>
