@@ -117,9 +117,15 @@ test.describe('Homepage', () => {
     await expect(page.getByText('A quiet writing surface')).toBeVisible()
     await expect(page.getByText('AI in the draft, not the way')).toBeVisible()
     await expect(page.locator('#install')).toBeVisible()
+    // Terminal types after scroll-into-view; allow the typewriter to finish the first command
+    await page.locator('#install').scrollIntoViewIfNeeded()
     await expect(
       page.getByText('composer require austintoddj/canvas')
-    ).toBeVisible()
+    ).toBeVisible({ timeout: 20_000 })
+    // Replay fades in only after the full sequence completes
+    await expect(
+      page.getByRole('button', { name: 'Replay animation' })
+    ).toBeVisible({ timeout: 30_000 })
     await expect(page.getByText(/canvas_users/i)).toHaveCount(0)
   })
 
@@ -143,12 +149,24 @@ test.describe('Homepage', () => {
       .locator('footer a[href*="github.com/austintoddj/canvas"]')
       .first()
     const authorLink = page.locator('a[href*="x.com/austintoddj"]')
+    const upgradeLink = page
+      .locator('footer')
+      .getByRole('link', { name: 'Upgrade guide' })
+    const licenseLink = page
+      .locator('footer')
+      .getByRole('link', { name: 'MIT License' })
 
     await expect(githubLink).toBeVisible()
     await expect(authorLink).toBeVisible()
-    await expect(
-      page.locator('footer').getByRole('link', { name: 'MIT License' })
-    ).toBeVisible()
+    // Production branch of austintoddj/canvas (master today; main at v7)
+    await expect(upgradeLink).toHaveAttribute(
+      'href',
+      'https://github.com/austintoddj/canvas/blob/master/.github/UPGRADE.md'
+    )
+    await expect(licenseLink).toHaveAttribute(
+      'href',
+      'https://github.com/austintoddj/canvas/blob/master/license'
+    )
     await expect(
       page
         .locator('footer')
@@ -162,21 +180,75 @@ test.describe('Homepage', () => {
     await expect(page.getByText(/live demo/i)).toHaveCount(0)
   })
 
-  test('should follow system light preference', async ({ page }) => {
+  test('should show the header GitHub star button', async ({ page }) => {
+    await page.goto('/')
+    const starButton = page
+      .locator('header a[href*="github.com/austintoddj/canvas"]')
+      .filter({ hasText: 'Star' })
+    await expect(starButton).toBeVisible()
+    await expect(starButton).toContainText(/Star/)
+    await expect(starButton).toHaveAttribute(
+      'href',
+      /github.com\/austintoddj\/canvas/
+    )
+    // Compact count (e.g. 3.3K) is optional: Packagist can fail and stars stay null
+    const starCount = starButton.getByText(/^\d[\d.]*[KMB]?$/i)
+    if ((await starCount.count()) > 0) {
+      await expect(starCount).toBeVisible()
+    }
+  })
+
+  test('should follow system light preference when no stored theme', async ({
+    page
+  }) => {
+    await page.addInitScript(() => {
+      localStorage.removeItem('theme')
+    })
     await page.emulateMedia({ colorScheme: 'light' })
     await page.goto('/')
+    await expect(page.locator('html')).not.toHaveClass(/dark/)
     await expect(page.locator('img[src*="editor.png"]').first()).toBeVisible()
     await expect(
       page.locator('img[src*="editor-dark.png"]').first()
     ).toBeHidden()
   })
 
-  test('should follow system dark preference', async ({ page }) => {
+  test('should follow system dark preference when no stored theme', async ({
+    page
+  }) => {
+    await page.addInitScript(() => {
+      localStorage.removeItem('theme')
+    })
     await page.emulateMedia({ colorScheme: 'dark' })
     await page.goto('/')
+    await expect(page.locator('html')).toHaveClass(/dark/)
     await expect(
       page.locator('img[src*="editor-dark.png"]').first()
     ).toBeVisible()
     await expect(page.locator('img[src*="editor.png"]').first()).toBeHidden()
+  })
+
+  test('should toggle theme and persist the preference', async ({ page }) => {
+    await page.emulateMedia({ colorScheme: 'light' })
+    await page.goto('/')
+    // Clear once (not via addInitScript) so reload can still read the stored value
+    await page.evaluate(() => localStorage.removeItem('theme'))
+    await page.reload()
+
+    const toggle = page.getByRole('button', { name: 'Toggle theme' })
+    await expect(toggle).toBeVisible()
+    await expect(page.locator('html')).not.toHaveClass(/dark/)
+
+    await toggle.click()
+    await expect(page.locator('html')).toHaveClass(/dark/)
+    await expect(
+      page.locator('img[src*="editor-dark.png"]').first()
+    ).toBeVisible()
+    await expect
+      .poll(async () => page.evaluate(() => localStorage.getItem('theme')))
+      .toBe('dark')
+
+    await page.reload()
+    await expect(page.locator('html')).toHaveClass(/dark/)
   })
 })

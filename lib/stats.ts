@@ -2,6 +2,7 @@ export type SiteStats = {
   downloads: number | null
   forks: number | null
   contributors: number | null
+  stars: number | null
 }
 
 const REVALIDATE_SECONDS = 900
@@ -12,6 +13,7 @@ type PackagistPackageStats = {
       total: number
     }
     github_forks: number
+    github_stars: number
   }
 }
 
@@ -82,6 +84,7 @@ export async function getSiteStats(): Promise<SiteStats> {
   return {
     downloads: packagist?.package.downloads.total ?? null,
     forks: packagist?.package.github_forks ?? null,
-    contributors: contributors?.length ?? null
+    contributors: contributors?.length ?? null,
+    stars: packagist?.package.github_stars ?? null
   }
 }

@@ -1,3 +1,4 @@
+import { creator, productLinks } from '@/lib/seo'
 import { QuillIcon } from './icons'
 
 export function Footer() {
@@ -16,7 +17,7 @@ export function Footer() {
 
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-canvas-500">
             <a
-              href="https://github.com/austintoddj/canvas"
+              href={productLinks.github}
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors hover:text-canvas-900 dark:hover:text-white"
@@ -24,7 +25,7 @@ export function Footer() {
               GitHub
             </a>
             <a
-              href="https://github.com/austintoddj/canvas/blob/v7/.github/UPGRADE.md"
+              href={productLinks.upgradeGuide}
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors hover:text-canvas-900 dark:hover:text-white"
@@ -32,7 +33,7 @@ export function Footer() {
               Upgrade guide
             </a>
             <a
-              href="https://github.com/austintoddj/canvas/discussions"
+              href={productLinks.discussions}
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors hover:text-canvas-900 dark:hover:text-white"
@@ -40,7 +41,7 @@ export function Footer() {
               Discussions
             </a>
             <a
-              href="https://packagist.org/packages/austintoddj/canvas"
+              href={productLinks.packagist}
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors hover:text-canvas-900 dark:hover:text-white"
@@ -54,7 +55,7 @@ export function Footer() {
           <p>
             Open source under the{' '}
             <a
-              href="https://github.com/austintoddj/canvas/blob/v7/license"
+              href={productLinks.license}
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-2 hover:text-canvas-900 dark:hover:text-white"
@@ -63,7 +64,7 @@ export function Footer() {
             </a>
             . Created by{' '}
             <a
-              href="https://x.com/austintoddj"
+              href={creator.xUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-2 hover:text-canvas-900 dark:hover:text-white"

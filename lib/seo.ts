@@ -45,10 +45,21 @@ export const creator = {
   githubUrl: 'https://github.com/austintoddj/canvas'
 } as const
 
+/**
+ * Production branch on austintoddj/canvas (GitHub default).
+ * Today this is `master`; rename to `main` when Canvas v7 ships.
+ */
+export const canvasProductionBranch = 'master'
+
+const canvasBlob = (path: string) =>
+  `https://github.com/austintoddj/canvas/blob/${canvasProductionBranch}/${path}`
+
 export const productLinks = {
   github: 'https://github.com/austintoddj/canvas',
   packagist: 'https://packagist.org/packages/austintoddj/canvas',
-  license: 'https://github.com/austintoddj/canvas/blob/v7/license',
+  /** Production-branch blob; follows `canvasProductionBranch`. */
+  license: canvasBlob('license'),
+  upgradeGuide: canvasBlob('.github/UPGRADE.md'),
   discussions: 'https://github.com/austintoddj/canvas/discussions',
   productHunt: 'https://www.producthunt.com/products/canvas',
   laravelNews: 'https://laravel-news.com/canvas-a-laravel-publishing-platform'

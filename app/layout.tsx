@@ -131,6 +131,17 @@ export const viewport: Viewport = {
   ]
 }
 
+const themeInitScript = `
+(() => {
+  try {
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = stored === 'dark' || (stored !== 'light' && prefersDark);
+    document.documentElement.classList.toggle('dark', isDark);
+  } catch {}
+})();
+`
+
 export default function RootLayout({
   children
 }: Readonly<{
@@ -140,8 +151,10 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} h-full scroll-smooth antialiased`}
+      suppressHydrationWarning
     >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}

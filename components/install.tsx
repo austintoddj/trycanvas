@@ -1,17 +1,4 @@
-const commands = [
-  { type: 'command' as const, text: 'composer require austintoddj/canvas' },
-  { type: 'command' as const, text: 'php artisan canvas:install' },
-  { type: 'command' as const, text: 'php artisan storage:link' },
-  { type: 'comment' as const, text: '# Grant yourself admin access' },
-  {
-    type: 'command' as const,
-    text: 'php artisan canvas:make-admin you@example.com'
-  },
-  {
-    type: 'comment' as const,
-    text: '# Sign in to your app, then visit /canvas'
-  }
-]
+import { InstallTerminal } from './install-terminal'
 
 export function Install() {
   return (
@@ -31,43 +18,7 @@ export function Install() {
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-canvas-200 bg-white shadow-sm dark:border-canvas-800 dark:bg-canvas-950">
-          <div className="flex items-center gap-2 border-b border-canvas-100 bg-canvas-50/80 px-4 py-3 dark:border-canvas-800 dark:bg-canvas-900/50">
-            <div className="flex gap-1.5">
-              <div className="h-2.5 w-2.5 rounded-full bg-canvas-300 dark:bg-canvas-700" />
-              <div className="h-2.5 w-2.5 rounded-full bg-canvas-300 dark:bg-canvas-700" />
-              <div className="h-2.5 w-2.5 rounded-full bg-canvas-300 dark:bg-canvas-700" />
-            </div>
-            <span className="ml-2 text-[12px] font-medium text-canvas-500">
-              terminal
-            </span>
-          </div>
-          <div className="code-block overflow-x-auto p-5 font-mono text-[13px] leading-relaxed sm:p-6 sm:text-[14px]">
-            <div className="space-y-3">
-              {commands.map((line, index) =>
-                line.type === 'comment' ? (
-                  <div
-                    key={index}
-                    className={
-                      index > 0 && commands[index - 1]?.type === 'command'
-                        ? 'pt-2 text-canvas-500'
-                        : 'text-canvas-500'
-                    }
-                  >
-                    {line.text}
-                  </div>
-                ) : (
-                  <div key={index}>
-                    <span className="select-none text-canvas-400">$ </span>
-                    <span className="text-emerald-600 dark:text-emerald-400">
-                      {line.text}
-                    </span>
-                  </div>
-                )
-              )}
-            </div>
-          </div>
-        </div>
+        <InstallTerminal />
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           <div className="rounded-2xl border border-canvas-200 bg-white p-5 dark:border-canvas-800 dark:bg-canvas-900/50">

@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@custom-variant dark (@media (prefers-color-scheme: dark));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -18,8 +18,8 @@
   --color-canvas-900: #18181b;
   --color-canvas-950: #09090b;
 
-  --animate-fade-in: fade-in 0.6s ease-out forwards;
-  --animate-fade-in-up: fade-in-up 0.7s ease-out forwards;
+  --animate-fade-in: fade-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in-up: fade-in-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes fade-in {
@@ -34,11 +34,40 @@
 @keyframes fade-in-up {
   0% {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(12px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes terminal-cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.terminal-cursor {
+  animation: terminal-cursor-blink 1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-fade-in-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .terminal-cursor {
+    animation: none;
+    opacity: 1;
   }
 }
 
@@ -51,11 +80,9 @@ html {
   color: #fafafa;
 }
 
-@media (prefers-color-scheme: dark) {
-  ::selection {
-    background: #fafafa;
-    color: #18181b;
-  }
+.dark ::selection {
+  background: #fafafa;
+  color: #18181b;
 }
 
 ::-webkit-scrollbar {
@@ -72,10 +99,8 @@ html {
   border-radius: 4px;
 }
 
-@media (prefers-color-scheme: dark) {
-  ::-webkit-scrollbar-thumb {
-    background: #3f3f46;
-  }
+.dark ::-webkit-scrollbar-thumb {
+  background: #3f3f46;
 }
 
 .code-block {
@@ -89,10 +114,8 @@ html {
   background-size: 48px 48px;
 }
 
-@media (prefers-color-scheme: dark) {
-  .bg-grid {
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  }
+.dark .bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
