@@ -233,7 +233,7 @@ export function InstallTerminal() {
                 </span>
                 {cursorHere && (
                   <span
-                    className="terminal-cursor ml-0.5 inline-block h-[1.05em] w-[0.55ch] translate-y-[0.1em] bg-emerald-600 align-middle dark:bg-emerald-400"
+                    className="terminal-cursor ml-0.5 inline-block h-[1.05em] w-[0.55ch] translate-y-[0.1em] bg-canvas-900 align-middle dark:bg-canvas-100"
                     aria-hidden="true"
                   />
                 )}
@@ -245,7 +245,7 @@ export function InstallTerminal() {
             <div>
               <span className="select-none text-canvas-400">$ </span>
               <span
-                className="terminal-cursor inline-block h-[1.05em] w-[0.55ch] translate-y-[0.1em] bg-emerald-600 align-middle dark:bg-emerald-400"
+                className="terminal-cursor inline-block h-[1.05em] w-[0.55ch] translate-y-[0.1em] bg-canvas-900 align-middle dark:bg-canvas-100"
                 aria-hidden="true"
               />
             </div>
