@@ -25,5 +25,6 @@ dist-ssr
 /test-results/
 .auth/
 .next
+next-env.d.ts
 *.tsbuildinfo
 tsconfig.tsbuildinfo
