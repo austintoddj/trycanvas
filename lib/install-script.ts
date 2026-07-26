@@ -56,28 +56,22 @@ export function getInstallScript(
       kind: 'command',
       input: 'php artisan canvas:install',
       output: [
+        '  Publishing assets ..................................... 7.88ms DONE',
+        '  Publishing configuration .............................. 0.37ms DONE',
+        '  Running migrations ................................... 15.37ms DONE',
+        '  Linking storage ....................................... 0.37ms DONE',
         '',
-        '  Installing Canvas.',
-        '',
-        '  Publishing assets ............... DONE',
-        '  Publishing configuration ........ DONE',
-        '  Running migrations .............. DONE',
-        '',
-        '  Installation complete.'
+        'Canvas installed successfully.'
       ]
     },
     {
-      kind: 'command',
-      input: 'php artisan storage:link',
-      output: [
-        '',
-        '  The [public/storage] link has been connected to [storage/app/public].'
-      ]
+      kind: 'comment',
+      text: '# Grant yourself admin access: php artisan canvas:make-admin you@email.com'
     },
     {
       kind: 'command',
-      input: 'php artisan canvas:make-admin you@example.com',
-      output: ['', '  Assigned Admin to you@example.com.']
+      input: 'php artisan canvas:make-admin you@email.com',
+      output: ['', '  Assigned Admin to you@email.com.']
     },
     {
       kind: 'comment',

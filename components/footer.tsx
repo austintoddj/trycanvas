@@ -1,5 +1,5 @@
-import { creator, productLinks } from '@/lib/seo'
 import { QuillIcon } from './icons'
+import { creator, productLinks } from '@/lib/seo'
 
 export function Footer() {
   return (

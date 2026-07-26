@@ -9,7 +9,8 @@
     "test:ui": "playwright test --ui",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "preflight": "bash bin/preflight.sh"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
