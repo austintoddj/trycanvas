@@ -12,10 +12,10 @@ export const siteDescription =
 
 /**
  * Shorter card copy for Open Graph / Twitter (link previews prefer ~100–120 chars).
- * Aligned with the product: own auth, own domain, admin at /canvas.
+ * Aligned with the product: distraction-free editor, media library, SEO tools, analytics.
  */
 export const socialDescription =
-  'Open-source publishing for Laravel. Your auth, your domain, a quiet admin at /canvas.'
+  'Open-source publishing for Laravel. Distraction-free editor, media library, SEO tools, and audience analytics — lightweight and easy to drop in.'
 
 export const siteKeywords = [
   'Laravel',
