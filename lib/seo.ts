@@ -8,7 +8,7 @@ export const siteTitle = 'Canvas — Publishing on your own terms'
 
 /** Primary meta description (SERP). Keep under ~160 chars where practical. */
 export const siteDescription =
-  'Canvas — publishing on your own terms. Canvas is a powerful tool for Laravel apps that makes it easy to write, edit, and brand your work with a range of publishing tools.'
+  'Canvas is an open-source package that adds a modern publishing layer to any Laravel app. It gives you a distraction-free editor, a full media library, SEO tools, and audience analytics — all while staying lightweight and easy to drop in.'
 
 /**
  * Shorter card copy for Open Graph / Twitter (link previews prefer ~100–120 chars).
