@@ -17,7 +17,7 @@ test.describe('Homepage', () => {
     )
     await expect(page.locator('meta[name="description"]')).toHaveAttribute(
       'content',
-      /powerful tool for Laravel apps.*write, edit, and brand your work/i
+      /Canvas.*publishing on your own terms/i
     )
 
     await expect(page.locator('meta[property="og:type"]')).toHaveAttribute(
