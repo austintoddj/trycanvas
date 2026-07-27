@@ -84,7 +84,7 @@ export function Hero({ latestVersion, latestReleaseUrl }: HeroProps) {
           style={{ animationDelay: '0.25s' }}
         >
           <span className="flex items-center gap-1.5">
-            <LaravelIcon className="h-3.5 w-3.5" />
+            <LaravelIcon className="h-3.5 w-3.5 text-canvas-700 dark:text-canvas-300" />
             Laravel 13
           </span>
           <span className="flex items-center gap-1.5">
