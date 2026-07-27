@@ -1,10 +1,20 @@
+/** Artisan-style progress row: label .... duration DONE */
+export type InstallProgressLine = {
+  kind: 'progress'
+  label: string
+  duration: string
+}
+
+export type InstallOutputLine = string | InstallProgressLine
+
 export type InstallScriptStep =
-  | { kind: 'command'; input: string; output?: string[] }
+  | { kind: 'command'; input: string; output?: InstallOutputLine[] }
   | { kind: 'comment'; text: string }
 
 export type TerminalLine =
   | { type: 'command'; text: string }
   | { type: 'output'; text: string }
+  | { type: 'progress'; label: string; duration: string }
   | { type: 'comment'; text: string }
 
 /** Fallback when Packagist/GitHub is unreachable at build/request time. */
@@ -56,10 +66,26 @@ export function getInstallScript(
       kind: 'command',
       input: 'php artisan canvas:install',
       output: [
-        '  Publishing assets ..................................... 7.88ms DONE',
-        '  Publishing configuration .............................. 0.37ms DONE',
-        '  Running migrations ................................... 15.37ms DONE',
-        '  Linking storage ....................................... 0.37ms DONE',
+        {
+          kind: 'progress',
+          label: 'Publishing assets',
+          duration: '7.88ms'
+        },
+        {
+          kind: 'progress',
+          label: 'Publishing configuration',
+          duration: '0.37ms'
+        },
+        {
+          kind: 'progress',
+          label: 'Running migrations',
+          duration: '15.37ms'
+        },
+        {
+          kind: 'progress',
+          label: 'Linking storage',
+          duration: '0.37ms'
+        },
         '',
         'Canvas installed successfully.'
       ]
@@ -88,8 +114,16 @@ export function getCompletedTerminalLines(
   for (const step of getInstallScript(packageVersion)) {
     if (step.kind === 'command') {
       lines.push({ type: 'command', text: step.input })
-      for (const text of step.output ?? []) {
-        lines.push({ type: 'output', text })
+      for (const line of step.output ?? []) {
+        if (typeof line === 'string') {
+          lines.push({ type: 'output', text: line })
+        } else {
+          lines.push({
+            type: 'progress',
+            label: line.label,
+            duration: line.duration
+          })
+        }
       }
     } else {
       lines.push({ type: 'comment', text: step.text })

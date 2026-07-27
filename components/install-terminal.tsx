@@ -98,6 +98,40 @@ function outputDelayForLine(text: string): number {
   return OUTPUT_LINE_MS
 }
 
+/**
+ * Enough dots to fill the progress column; overflow clips on small screens.
+ * max-w matches the original Symfony-style ~69ch canvas:install rows so these
+ * lines don’t stretch wider than the rest of the terminal content.
+ *
+ * Spacing uses ch padding (not flex text nodes) so indent + gaps match the
+ * original monospaced string: `  {label} {dots} {duration} DONE`.
+ */
+const PROGRESS_DOTS = '.'.repeat(48)
+
+function ProgressOutputLine({
+  label,
+  duration
+}: {
+  label: string
+  duration: string
+}) {
+  return (
+    <div
+      className="flex max-w-[69ch] min-h-[1.25em] min-w-0 items-baseline pl-[2ch] text-canvas-500"
+      aria-label={`${label} ${duration} DONE`}
+    >
+      <span className="shrink-0 pr-[1ch]">{label}</span>
+      <span
+        className="min-w-[2ch] flex-1 overflow-hidden whitespace-nowrap"
+        aria-hidden="true"
+      >
+        {PROGRESS_DOTS}
+      </span>
+      <span className="shrink-0 pl-[1ch]">{duration} DONE</span>
+    </div>
+  )
+}
+
 type InstallTerminalProps = {
   /** GitHub/Packagist release tag, e.g. "v6.0.56" or "v7.0.2" */
   packageVersion?: string | null
@@ -168,10 +202,22 @@ export function InstallTerminal({ packageVersion }: InstallTerminalProps) {
 
       if (step.output?.length) {
         setShowCursor(false)
-        for (const text of step.output) {
+        for (const line of step.output) {
           if (!isActive()) return
-          setLines(prev => [...prev, { type: 'output', text }])
-          await wait(outputDelayForLine(text), isActive)
+          if (typeof line === 'string') {
+            setLines(prev => [...prev, { type: 'output', text: line }])
+            await wait(outputDelayForLine(line), isActive)
+          } else {
+            setLines(prev => [
+              ...prev,
+              {
+                type: 'progress',
+                label: line.label,
+                duration: line.duration
+              }
+            ])
+            await wait(outputDelayForLine(line.label), isActive)
+          }
         }
       } else {
         setShowCursor(false)
@@ -284,6 +330,16 @@ export function InstallTerminal({ packageVersion }: InstallTerminalProps) {
                 >
                   {line.text}
                 </div>
+              )
+            }
+
+            if (line.type === 'progress') {
+              return (
+                <ProgressOutputLine
+                  key={index}
+                  label={line.label}
+                  duration={line.duration}
+                />
               )
             }
 
