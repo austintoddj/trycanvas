@@ -1,11 +1,14 @@
-# NOTE: Whenever modifying this workflow, ensure it matches the Vercel deployment checks.
 name: tests
 
 on:
-  push:
-    branches: [main, develop]
   pull_request:
-    branches: [main, develop]
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 concurrency:
   group: tests-${{ github.ref }}
