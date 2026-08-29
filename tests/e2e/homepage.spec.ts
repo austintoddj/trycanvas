@@ -232,21 +232,78 @@ test.describe('Homepage', () => {
   })
 
   test('should toggle theme and persist the preference', async ({ page }) => {
-    await page.emulateMedia({ colorScheme: 'light' })
+    await page.emulateMedia({
+      colorScheme: 'light',
+      reducedMotion: 'no-preference'
+    })
     await page.goto('/')
     // Clear once (not via addInitScript) so reload can still read the stored value
     await page.evaluate(() => localStorage.removeItem('theme'))
     await page.reload()
 
-    const toggle = page.getByRole('button', { name: 'Toggle theme' })
+    const toggle = page.getByRole('button', { name: /theme/i })
     await expect(toggle).toBeVisible()
+    await expect(toggle).toHaveAttribute('aria-label', 'Switch to dark theme')
+    await expect(toggle).toHaveCSS('cursor', 'pointer')
     await expect(page.locator('html')).not.toHaveClass(/dark/)
+
+    const sun = toggle.locator('[data-theme-icon="sun"]')
+    const moon = toggle.locator('[data-theme-icon="moon"]')
+    await expect(sun).toHaveCount(1)
+    await expect(moon).toHaveCount(1)
+    await expect
+      .poll(async () => sun.evaluate(el => getComputedStyle(el).opacity))
+      .toBe('1')
+    await expect
+      .poll(async () => moon.evaluate(el => getComputedStyle(el).opacity))
+      .toBe('0')
+
+    const idleBackground = await toggle.evaluate(
+      el => getComputedStyle(el).backgroundColor
+    )
+    await toggle.hover()
+    await expect
+      .poll(async () =>
+        toggle.evaluate(el => getComputedStyle(el).backgroundColor)
+      )
+      .toBe(idleBackground)
 
     await toggle.click()
     await expect(page.locator('html')).toHaveClass(/dark/)
+    await expect(toggle).toHaveAttribute('aria-label', 'Switch to light theme')
     await expect(
       page.locator('img[src*="editor-dark.png"]').first()
     ).toBeVisible()
+    await expect
+      .poll(async () => {
+        const [sunStyle, moonStyle] = await Promise.all([
+          sun.evaluate(el => {
+            const style = getComputedStyle(el)
+            return {
+              opacity: style.opacity,
+              rotate: style.rotate,
+              scale: style.scale
+            }
+          }),
+          moon.evaluate(el => {
+            const style = getComputedStyle(el)
+            return {
+              opacity: style.opacity,
+              rotate: style.rotate,
+              scale: style.scale
+            }
+          })
+        ])
+        return (
+          sunStyle.opacity === '0' &&
+          moonStyle.opacity === '1' &&
+          sunStyle.rotate !== 'none' &&
+          sunStyle.rotate !== '0deg' &&
+          sunStyle.scale !== 'none' &&
+          sunStyle.scale !== '1'
+        )
+      })
+      .toBe(true)
     await expect
       .poll(async () => page.evaluate(() => localStorage.getItem('theme')))
       .toBe('dark')

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Pre-commit checklist: update deps, lint/format, typecheck, and build.
+# Pre-commit checklist: lint/format, typecheck, and build.
 #
 # Usage:
 #   bin/preflight.sh
@@ -15,9 +15,6 @@ step() {
     echo ""
     echo "==> $*"
 }
-
-step "npm update"
-npm update
 
 step "npm run lint"
 npm run lint
