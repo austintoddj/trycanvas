@@ -151,7 +151,7 @@ test.describe('Homepage', () => {
     const githubLink = page
       .locator('footer a[href*="github.com/austintoddj/canvas"]')
       .first()
-    const authorLink = page.locator('a[href*="x.com/austintoddj"]')
+    const designLink = page.locator('footer a[href="https://georgetownweb.co"]')
     const upgradeLink = page
       .locator('footer')
       .getByRole('link', { name: 'Upgrade guide' })
@@ -160,7 +160,9 @@ test.describe('Homepage', () => {
       .getByRole('link', { name: 'MIT License' })
 
     await expect(githubLink).toBeVisible()
-    await expect(authorLink).toBeVisible()
+    await expect(designLink).toBeVisible()
+    await expect(designLink).toHaveText('georgetownweb.co')
+    await expect(page.locator('footer').getByText('Design by')).toBeVisible()
     // Production branch of austintoddj/canvas (master today; main at v7)
     await expect(upgradeLink).toHaveAttribute(
       'href',

@@ -1,5 +1,5 @@
 import { QuillIcon } from './icons'
-import { creator, productLinks } from '@/lib/seo'
+import { productLinks } from '@/lib/seo'
 
 export function Footer() {
   return (
@@ -62,14 +62,14 @@ export function Footer() {
             >
               MIT License
             </a>
-            . Created by{' '}
+            . Design by{' '}
             <a
-              href={creator.xUrl}
+              href="https://georgetownweb.co"
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-2 hover:text-canvas-900 dark:hover:text-white"
             >
-              Todd Austin
+              georgetownweb.co
             </a>
             .
           </p>
