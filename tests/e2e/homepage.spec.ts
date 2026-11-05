@@ -313,4 +313,37 @@ test.describe('Homepage', () => {
     await page.reload()
     await expect(page.locator('html')).toHaveClass(/dark/)
   })
+
+  test('primary nav works on desktop and at a phone width', async ({
+    page
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 800 })
+    await page.goto('/')
+
+    const nav = page.getByRole('navigation')
+    await nav.getByRole('link', { name: 'Features' }).click()
+    await expect(page).toHaveURL(/#features/)
+    await expect(page.locator('#features')).toBeVisible()
+
+    await nav.getByRole('link', { name: 'Install' }).click()
+    await expect(page).toHaveURL(/#install/)
+    await expect(page.locator('#install')).toBeVisible()
+
+    await expect(nav.getByRole('link', { name: 'GitHub' })).toHaveAttribute(
+      'href',
+      'https://github.com/austintoddj/canvas'
+    )
+
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.goto('/')
+    await expect(nav.getByRole('link', { name: 'Features' })).toBeHidden()
+    await page.getByRole('link', { name: 'Get started' }).click()
+    await expect(page).toHaveURL(/#install/)
+    await expect(page.locator('#install')).toBeVisible()
+    await expect(
+      page
+        .locator('header a[href*="github.com/austintoddj/canvas"]')
+        .filter({ hasText: 'Star' })
+    ).toBeVisible()
+  })
 })
