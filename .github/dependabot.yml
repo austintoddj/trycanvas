@@ -13,10 +13,11 @@ updates:
       major:
         patterns: ["*"]
         update-types: [major]
-    # ignore:
-    #   - dependency-name: "<package>"
-    #     update-types: ["version-update:semver-major"]
-    #     # Reason: <why the toolchain can't run it yet>
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+        # Reason: typescript-eslint does not support TypeScript 7 yet.
+        # https://github.com/typescript-eslint/typescript-eslint/issues/10940
 
   - package-ecosystem: github-actions
     directory: /
