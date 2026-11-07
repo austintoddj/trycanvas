@@ -13,6 +13,7 @@
     "test": "node --eval \"process.exit(0)\"",
     "e2e": "playwright test --project=chromium",
     "check": "npm run typecheck && npm run lint && npm test",
+    "ci": "bash bin/ci.sh",
     "test:ui": "playwright test --ui",
     "format": "prettier --write .",
     "preflight": "bash bin/preflight.sh"
