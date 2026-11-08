@@ -6,7 +6,7 @@ import { useSyncExternalStore } from 'react'
 type Theme = 'light' | 'dark'
 
 const iconTransition =
-  'absolute inset-0 transition-[opacity,rotate,scale] duration-[320ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none'
+  'absolute inset-0 transition-[opacity,rotate,scale] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none'
 
 function getSnapshot(): Theme {
   return document.documentElement.classList.contains('dark') ? 'dark' : 'light'

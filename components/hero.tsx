@@ -1,5 +1,5 @@
+import { CopyPromptButton } from './copy-prompt-button'
 import {
-  ArrowRightIcon,
   GitHubIcon,
   LaravelIcon,
   PhpIcon,
@@ -31,16 +31,16 @@ export function Hero({ latestVersion, latestReleaseUrl }: HeroProps) {
           rel="noopener noreferrer"
           className="mb-8 inline-flex animate-fade-in items-center gap-2 rounded-full border border-canvas-200 bg-white/60 px-3 py-1 text-[12px] font-medium text-canvas-600 backdrop-blur transition-colors hover:border-canvas-300 hover:text-canvas-900 dark:border-canvas-800 dark:bg-canvas-900/60 dark:text-canvas-400 dark:hover:border-canvas-700 dark:hover:text-white"
         >
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          </span>
+          <span
+            className="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"
+            aria-hidden="true"
+          />
           {shippedLabel}
         </a>
 
         <h1
-          className="mb-6 animate-fade-in-up text-4xl font-semibold tracking-tight text-canvas-900 sm:text-5xl md:text-6xl dark:text-white"
-          style={{ animationDelay: '0.05s', lineHeight: 1.1 }}
+          className="mb-6 animate-fade-in-up text-balance text-4xl font-semibold leading-[1.1] tracking-tight text-canvas-900 sm:text-5xl md:text-6xl dark:text-white"
+          style={{ animationDelay: '0.05s' }}
         >
           Publishing
           <br className="hidden sm:block" />{' '}
@@ -50,7 +50,7 @@ export function Hero({ latestVersion, latestReleaseUrl }: HeroProps) {
         </h1>
 
         <p
-          className="mx-auto mb-10 max-w-2xl animate-fade-in-up text-lg leading-relaxed text-canvas-600 sm:text-xl dark:text-canvas-400"
+          className="mx-auto mb-10 max-w-2xl animate-fade-in-up text-pretty text-lg leading-relaxed text-canvas-600 sm:text-xl dark:text-canvas-400"
           style={{ animationDelay: '0.1s' }}
         >
           Canvas is a powerful tool for Laravel apps that makes it easy to
@@ -61,18 +61,12 @@ export function Hero({ latestVersion, latestReleaseUrl }: HeroProps) {
           className="flex animate-fade-in-up flex-row flex-wrap items-center justify-center gap-3"
           style={{ animationDelay: '0.15s' }}
         >
-          <a
-            href="#install"
-            className="inline-flex items-center gap-2 rounded-full border border-transparent bg-canvas-900 px-5 py-2.5 text-sm font-medium text-white transition-all hover:scale-[1.02] hover:bg-canvas-800 active:scale-[0.98] dark:border-canvas-600 dark:bg-canvas-100 dark:text-canvas-900 dark:hover:bg-white"
-          >
-            Get started
-            <ArrowRightIcon className="h-4 w-4" />
-          </a>
+          <CopyPromptButton />
           <a
             href="https://github.com/austintoddj/canvas"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-canvas-200 bg-white px-5 py-2.5 text-sm font-medium text-canvas-700 transition-all hover:scale-[1.02] hover:bg-canvas-50 active:scale-[0.98] dark:border-canvas-700 dark:bg-canvas-900 dark:text-canvas-200 dark:hover:bg-canvas-800"
+            className="inline-flex items-center gap-2 rounded-full border border-canvas-200 bg-white px-5 py-2.5 text-sm font-medium text-canvas-700 transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-canvas-300 hover:bg-canvas-50 active:scale-[0.97] dark:border-canvas-700 dark:bg-canvas-900 dark:text-canvas-200 dark:hover:bg-canvas-800"
           >
             <GitHubIcon className="h-4 w-4" />
             View on GitHub
@@ -85,11 +79,11 @@ export function Hero({ latestVersion, latestReleaseUrl }: HeroProps) {
         >
           <span className="flex items-center gap-1.5">
             <LaravelIcon className="h-3.5 w-3.5 text-canvas-700 dark:text-canvas-300" />
-            Laravel 13
+            Laravel 12+
           </span>
           <span className="flex items-center gap-1.5">
             <PhpIcon className="h-3.5 w-3.5" />
-            PHP 8.4
+            PHP 8.3+
           </span>
           <span className="flex items-center gap-1.5">
             <ReactIcon className="h-3.5 w-3.5" />

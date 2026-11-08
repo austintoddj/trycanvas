@@ -267,7 +267,7 @@ export function InstallTerminal({ packageVersion }: InstallTerminalProps) {
       ref={containerRef}
       className="flex h-[22rem] flex-col overflow-hidden rounded-xl border border-canvas-200 bg-white shadow-sm sm:h-[24rem] sm:rounded-2xl dark:border-canvas-800 dark:bg-canvas-950"
     >
-      <div className="flex shrink-0 items-center gap-1.5 border-b border-canvas-100 bg-canvas-50/80 px-2.5 py-1.5 sm:gap-2 sm:px-4 sm:py-2.5 dark:border-canvas-800 dark:bg-canvas-900/50">
+      <div className="flex shrink-0 items-center gap-1.5 border-b border-canvas-100 bg-canvas-50 px-2.5 py-1.5 sm:gap-2 sm:px-4 sm:py-2.5 dark:border-canvas-800 dark:bg-canvas-900">
         <div className="flex gap-1 sm:gap-1.5">
           <div className="h-1.5 w-1.5 rounded-full bg-canvas-300 sm:h-2.5 sm:w-2.5 dark:bg-canvas-700" />
           <div className="h-1.5 w-1.5 rounded-full bg-canvas-300 sm:h-2.5 sm:w-2.5 dark:bg-canvas-700" />
@@ -284,7 +284,7 @@ export function InstallTerminal({ packageVersion }: InstallTerminalProps) {
             tabIndex={displayStatus === 'complete' ? 0 : -1}
             aria-hidden={displayStatus !== 'complete'}
             disabled={displayStatus !== 'complete'}
-            className={`ml-auto inline-flex items-center gap-1 rounded-md px-1.5 py-1 text-[11px] font-medium text-canvas-400 transition-all duration-300 hover:bg-canvas-200/60 hover:text-canvas-700 sm:gap-1.5 sm:px-2 sm:py-1 sm:text-[12px] dark:hover:bg-canvas-800 dark:hover:text-canvas-200 ${
+            className={`ml-auto inline-flex items-center gap-1 rounded-md px-1.5 py-1 text-[11px] font-medium text-canvas-400 transition-opacity duration-150 hover:bg-canvas-200/60 hover:text-canvas-700 sm:gap-1.5 sm:px-2 sm:py-1 sm:text-[12px] dark:hover:bg-canvas-800 dark:hover:text-canvas-200 ${
               displayStatus === 'complete'
                 ? 'pointer-events-auto opacity-100'
                 : 'pointer-events-none opacity-0'
@@ -299,8 +299,10 @@ export function InstallTerminal({ packageVersion }: InstallTerminalProps) {
       <div
         ref={bodyRef}
         className="code-block min-h-0 flex-1 overflow-y-auto overflow-x-hidden p-3 font-mono text-[12px] leading-relaxed sm:p-5 sm:text-[13px] md:p-6 md:text-[14px]"
-        aria-live="polite"
       >
+        <div className="sr-only" aria-live="polite">
+          {displayStatus === 'complete' ? 'Install preview finished.' : ''}
+        </div>
         <div className="min-w-0 space-y-0.5">
           {displayLines.map((line, index) => {
             const isLast = index === displayLines.length - 1
