@@ -35,8 +35,8 @@
   --color-canvas-900: #18181b;
   --color-canvas-950: #09090b;
 
-  --animate-fade-in: fade-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
-  --animate-fade-in-up: fade-in-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 0.4s cubic-bezier(0.23, 1, 0.32, 1) both;
+  --animate-fade-in-up: fade-in-up 0.4s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
 @keyframes fade-in {
@@ -51,7 +51,7 @@
 @keyframes fade-in-up {
   0% {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(8px);
   }
   100% {
     opacity: 1;
@@ -74,7 +74,15 @@
   animation: terminal-cursor-blink 1s step-end infinite;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .animate-fade-in,
   .animate-fade-in-up {
     animation: none !important;
@@ -88,8 +96,15 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
+a[href]:focus-visible,
+button:focus-visible {
+  outline: 2px solid #18181b;
+  outline-offset: 2px;
+}
+
+.dark a[href]:focus-visible,
+.dark button:focus-visible {
+  outline-color: #fafafa;
 }
 
 ::selection {

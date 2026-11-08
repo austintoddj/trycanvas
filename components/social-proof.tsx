@@ -31,26 +31,23 @@ export function SocialProof({ stats }: SocialProofProps) {
     <section className="border-t border-canvas-100 py-24 sm:py-32 dark:border-canvas-900">
       <div className="mx-auto max-w-5xl px-6">
         <div className="mb-12 max-w-2xl">
-          <h2 className="mb-4 text-2xl font-semibold tracking-tight text-canvas-900 sm:text-3xl dark:text-white">
+          <h2 className="mb-4 text-balance text-2xl font-semibold leading-tight tracking-tight text-canvas-900 sm:text-3xl dark:text-white">
             Years in the Laravel ecosystem
           </h2>
-          <p className="text-[15px] leading-relaxed text-canvas-600 dark:text-canvas-400">
+          <p className="text-pretty text-[15px] leading-relaxed text-canvas-600 dark:text-canvas-400">
             Canvas was made for developers, by developers. Built for the most
             popular PHP framework on the market today, you&#39;ll be in good
             company.
           </p>
         </div>
 
-        <dl className="grid grid-cols-2 gap-6 lg:grid-cols-4">
+        <dl className="grid grid-cols-2 gap-x-8 gap-y-8 border-y border-canvas-200 py-8 lg:grid-cols-4 dark:border-canvas-800">
           {items.map(item => (
-            <div
-              key={item.label}
-              className="rounded-2xl border border-canvas-200 bg-white p-5 dark:border-canvas-800 dark:bg-canvas-900/50"
-            >
-              <dt className="text-[13px] text-canvas-500">{item.label}</dt>
-              <dd className="mt-2 text-2xl font-semibold tracking-tight text-canvas-900 dark:text-white">
+            <div key={item.label}>
+              <dd className="text-3xl font-semibold tabular-nums tracking-tight text-canvas-900 sm:text-4xl dark:text-white">
                 {item.value ?? '—'}
               </dd>
+              <dt className="mt-2 text-[13px] text-canvas-500">{item.label}</dt>
             </div>
           ))}
         </dl>

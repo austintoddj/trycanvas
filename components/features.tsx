@@ -57,18 +57,18 @@ export function Features() {
   return (
     <section
       id="features"
-      className="border-t border-canvas-100 py-24 sm:py-32 dark:border-canvas-900"
+      className="scroll-mt-20 border-t border-canvas-100 py-24 sm:py-32 dark:border-canvas-900"
     >
       <div className="mx-auto max-w-5xl px-6">
         <div className="mb-16 max-w-2xl">
-          <h2 className="mb-4 text-2xl font-semibold tracking-tight text-canvas-900 sm:text-3xl dark:text-white">
+          <h2 className="mb-4 text-balance text-2xl font-semibold leading-tight tracking-tight text-canvas-900 sm:text-3xl dark:text-white">
             Everything you need.
             <br />
             <span className="text-canvas-500 dark:text-canvas-400">
               Nothing you don’t.
             </span>
           </h2>
-          <p className="text-[15px] leading-relaxed text-canvas-600 dark:text-canvas-400">
+          <p className="text-pretty text-[15px] leading-relaxed text-canvas-600 dark:text-canvas-400">
             Write, organize, ship, and learn—publishing tools that fit how teams
             actually work, without turning your Laravel app into a CMS.
           </p>
@@ -80,15 +80,15 @@ export function Features() {
             return (
               <div
                 key={feature.title}
-                className="group rounded-2xl border border-canvas-200 bg-white p-6 transition-colors hover:border-canvas-300 dark:border-canvas-800 dark:bg-canvas-900/50 dark:hover:border-canvas-700"
+                className="rounded-2xl border border-canvas-200 bg-white p-6 transition-colors hover:border-canvas-300 dark:border-canvas-800 dark:bg-canvas-900 dark:hover:border-canvas-700"
               >
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-canvas-100 transition-transform group-hover:scale-105 dark:bg-canvas-800">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-canvas-100 dark:bg-canvas-800">
                   <Icon className="h-5 w-5 text-canvas-700 dark:text-canvas-300" />
                 </div>
                 <h3 className="mb-2 text-[15px] font-semibold text-canvas-900 dark:text-white">
                   {feature.title}
                 </h3>
-                <p className="text-[13.5px] leading-relaxed text-canvas-600 dark:text-canvas-400">
+                <p className="text-pretty text-sm leading-relaxed text-canvas-600 dark:text-canvas-400">
                   {feature.description}
                 </p>
               </div>

@@ -17,7 +17,7 @@ export default async function Home() {
   return (
     <>
       <Header stars={stats.stars} />
-      <main>
+      <main id="top">
         <Hero latestVersion={release?.tag} latestReleaseUrl={release?.url} />
         <ProductShowcase />
         <Features />

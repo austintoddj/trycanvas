@@ -52,7 +52,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 flex flex-col items-start justify-between gap-4 border-t border-canvas-100 pt-8 text-[12px] text-canvas-500 sm:flex-row sm:items-center dark:border-canvas-900">
-          <p>
+          <p className="text-pretty">
             Open source under the{' '}
             <a
               href={productLinks.license}
@@ -73,7 +73,9 @@ export function Footer() {
             </a>
             .
           </p>
-          <p>A publishing platform for Laravel applications.</p>
+          <p className="text-pretty">
+            A publishing platform for Laravel applications.
+          </p>
         </div>
       </div>
     </footer>
