@@ -1,5 +1,5 @@
+import { CopyPromptButton } from './copy-prompt-button'
 import {
-  ArrowRightIcon,
   GitHubIcon,
   LaravelIcon,
   PhpIcon,
@@ -58,25 +58,13 @@ export function Hero({ latestVersion, latestReleaseUrl }: HeroProps) {
         </p>
 
         <div
-          className="flex animate-fade-in-up flex-row flex-wrap items-center justify-center gap-3"
+          className="flex animate-fade-in-up flex-col items-center gap-3"
           style={{ animationDelay: '0.15s' }}
         >
-          <a
-            href="#install"
-            className="inline-flex items-center gap-2 rounded-full border border-transparent bg-canvas-900 px-5 py-2.5 text-sm font-medium text-white transition-all hover:scale-[1.02] hover:bg-canvas-800 active:scale-[0.98] dark:border-canvas-600 dark:bg-canvas-100 dark:text-canvas-900 dark:hover:bg-white"
-          >
-            Get started
-            <ArrowRightIcon className="h-4 w-4" />
-          </a>
-          <a
-            href="https://github.com/austintoddj/canvas"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-canvas-200 bg-white px-5 py-2.5 text-sm font-medium text-canvas-700 transition-all hover:scale-[1.02] hover:bg-canvas-50 active:scale-[0.98] dark:border-canvas-700 dark:bg-canvas-900 dark:text-canvas-200 dark:hover:bg-canvas-800"
-          >
-            <GitHubIcon className="h-4 w-4" />
-            View on GitHub
-          </a>
+          <CopyPromptButton />
+          <p className="text-[13px] text-canvas-500">
+            Paste it into an agent in your Laravel app.
+          </p>
         </div>
 
         <div

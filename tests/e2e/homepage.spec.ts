@@ -96,18 +96,32 @@ test.describe('Homepage', () => {
     await expect(page.getByText(/Just shipped/i)).toBeVisible()
   })
 
-  test('should have working call-to-action buttons', async ({ page }) => {
+  test('should copy an install prompt from the hero', async ({ page }) => {
+    await page.context().grantPermissions(['clipboard-read', 'clipboard-write'])
     await page.goto('/')
-    const getStartedButton = page.locator('a:has-text("Get started")').first()
-    const githubButton = page.locator('a:has-text("View on GitHub")').first()
 
-    await expect(getStartedButton).toBeVisible()
-    await expect(githubButton).toBeVisible()
-    await expect(getStartedButton).toHaveAttribute('href', '#install')
-    await expect(githubButton).toHaveAttribute(
-      'href',
-      /github.com\/austintoddj\/canvas/
-    )
+    const copyButton = page.getByRole('button', {
+      name: /^(Copy prompt|Copied)$/
+    })
+    await expect(copyButton).toBeVisible()
+    await expect(
+      page.getByText('Paste it into an agent in your Laravel app.')
+    ).toBeVisible()
+
+    await copyButton.click()
+    await expect(copyButton).toHaveText('Copied')
+
+    const prompt = await page.evaluate(() => navigator.clipboard.readText())
+    expect(prompt).toContain('composer require austintoddj/canvas')
+    expect(prompt).toContain('php artisan canvas:install')
+    expect(prompt).toContain('php artisan canvas:make-admin')
+    expect(prompt).toContain('open /canvas')
+    expect(prompt).toContain('Do not run php artisan canvas:ui unless I ask')
+
+    await expect(page.getByRole('link', { name: 'Get started' })).toHaveCount(0)
+    await expect(
+      page.getByRole('link', { name: 'View on GitHub' })
+    ).toHaveCount(0)
   })
 
   test('should display features and install sections', async ({ page }) => {
@@ -337,7 +351,7 @@ test.describe('Homepage', () => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto('/')
     await expect(nav.getByRole('link', { name: 'Features' })).toBeHidden()
-    await page.getByRole('link', { name: 'Get started' }).click()
+    await page.getByRole('link', { name: 'Install Canvas' }).click()
     await expect(page).toHaveURL(/#install/)
     await expect(page.locator('#install')).toBeVisible()
     await expect(
