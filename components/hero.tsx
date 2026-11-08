@@ -58,13 +58,19 @@ export function Hero({ latestVersion, latestReleaseUrl }: HeroProps) {
         </p>
 
         <div
-          className="flex animate-fade-in-up flex-col items-center gap-3"
+          className="flex animate-fade-in-up flex-row flex-wrap items-center justify-center gap-3"
           style={{ animationDelay: '0.15s' }}
         >
           <CopyPromptButton />
-          <p className="text-[13px] text-canvas-500">
-            Paste it into an agent in your Laravel app.
-          </p>
+          <a
+            href="https://github.com/austintoddj/canvas"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-canvas-200 bg-white px-5 py-2.5 text-sm font-medium text-canvas-700 transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-canvas-300 hover:bg-canvas-50 active:scale-[0.97] dark:border-canvas-700 dark:bg-canvas-900 dark:text-canvas-200 dark:hover:bg-canvas-800"
+          >
+            <GitHubIcon className="h-4 w-4" />
+            View on GitHub
+          </a>
         </div>
 
         <div

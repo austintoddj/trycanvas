@@ -104,9 +104,15 @@ test.describe('Homepage', () => {
       name: /^(Copy prompt|Copied)$/
     })
     await expect(copyButton).toBeVisible()
+    const githubButton = page.getByRole('link', { name: 'View on GitHub' })
+    await expect(githubButton).toBeVisible()
+    await expect(githubButton).toHaveAttribute(
+      'href',
+      'https://github.com/austintoddj/canvas'
+    )
     await expect(
       page.getByText('Paste it into an agent in your Laravel app.')
-    ).toBeVisible()
+    ).toHaveCount(0)
 
     await copyButton.click()
     await expect(copyButton).toHaveText('Copied')
@@ -119,9 +125,6 @@ test.describe('Homepage', () => {
     expect(prompt).toContain('Do not run php artisan canvas:ui unless I ask')
 
     await expect(page.getByRole('link', { name: 'Get started' })).toHaveCount(0)
-    await expect(
-      page.getByRole('link', { name: 'View on GitHub' })
-    ).toHaveCount(0)
   })
 
   test('should display features and install sections', async ({ page }) => {
