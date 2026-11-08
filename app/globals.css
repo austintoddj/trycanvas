@@ -74,6 +74,16 @@
   animation: terminal-cursor-blink 1s step-end infinite;
 }
 
+.install-arrow {
+  transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .install-arrow {
+    transform: translateX(4px);
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -93,6 +103,12 @@ html {
   .terminal-cursor {
     animation: none;
     opacity: 1;
+  }
+
+  .install-arrow,
+  .group:hover .install-arrow {
+    transition: none;
+    transform: none;
   }
 }
 

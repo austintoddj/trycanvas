@@ -115,7 +115,7 @@ test.describe('Homepage', () => {
     ).toHaveCount(0)
 
     await copyButton.click()
-    await expect(copyButton).toHaveText('Copied')
+    await expect(copyButton).toHaveAccessibleName('Copied')
 
     const prompt = await page.evaluate(() => navigator.clipboard.readText())
     expect(prompt).toContain('composer require austintoddj/canvas')

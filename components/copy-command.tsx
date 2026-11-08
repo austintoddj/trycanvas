@@ -6,6 +6,9 @@ type CopyCommandProps = {
   command: string
 }
 
+const fade =
+  'col-start-1 row-start-1 transition-opacity duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none'
+
 export function CopyCommand({ command }: CopyCommandProps) {
   const [copied, setCopied] = useState(false)
   const timeoutRef = useRef<number | null>(null)
@@ -55,7 +58,20 @@ export function CopyCommand({ command }: CopyCommandProps) {
         }}
         className="shrink-0 rounded-md px-2 py-1 text-[13px] font-medium text-canvas-600 transition-colors hover:text-canvas-900 dark:text-canvas-300 dark:hover:text-white"
       >
-        {copied ? 'Copied' : 'Copy'}
+        <span className="grid">
+          <span
+            aria-hidden={copied}
+            className={`${fade} ${copied ? 'opacity-0' : 'opacity-100'}`}
+          >
+            Copy
+          </span>
+          <span
+            aria-hidden={!copied}
+            className={`${fade} ${copied ? 'opacity-100' : 'opacity-0'}`}
+          >
+            Copied
+          </span>
+        </span>
       </button>
     </div>
   )

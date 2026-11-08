@@ -21,10 +21,10 @@ export function Cta() {
           <div className="flex flex-row flex-wrap items-center justify-center gap-3">
             <a
               href="#install"
-              className="inline-flex items-center gap-2 rounded-full border border-transparent bg-white px-5 py-2.5 text-sm font-medium text-canvas-900 transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-canvas-100 active:scale-[0.97]"
+              className="group inline-flex items-center gap-2 rounded-full border border-transparent bg-white px-5 py-2.5 text-sm font-medium text-canvas-900 transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-canvas-100 active:scale-[0.97]"
             >
               Install Canvas
-              <ArrowRightIcon className="h-4 w-4" />
+              <ArrowRightIcon className="install-arrow h-4 w-4" />
             </a>
             <a
               href="https://github.com/austintoddj/canvas"

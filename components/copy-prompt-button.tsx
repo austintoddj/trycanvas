@@ -6,6 +6,12 @@ import { useEffect, useRef, useState } from 'react'
 
 const COPIED_MS = 2000
 
+const fade =
+  'transition-opacity duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none'
+
+const iconSwap =
+  'absolute inset-0 transition-[opacity,scale] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none'
+
 function copyWithSelection(text: string) {
   const area = document.createElement('textarea')
   area.value = text
@@ -59,12 +65,32 @@ export function CopyPromptButton() {
       aria-live="polite"
       className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-transparent bg-canvas-900 px-5 py-2.5 text-sm font-medium text-white transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-canvas-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-canvas-900 active:scale-[0.97] dark:border-canvas-600 dark:bg-canvas-100 dark:text-canvas-900 dark:hover:bg-white dark:focus-visible:outline-white"
     >
-      {copied ? (
-        <CheckIcon className="h-4 w-4" />
-      ) : (
-        <CopyIcon className="h-4 w-4" />
-      )}
-      {copied ? 'Copied' : 'Copy prompt'}
+      <span className="relative block h-4 w-4" aria-hidden="true">
+        <span
+          className={`${iconSwap} ${copied ? 'scale-50 opacity-0' : 'scale-100 opacity-100'}`}
+        >
+          <CopyIcon className="h-4 w-4" />
+        </span>
+        <span
+          className={`${iconSwap} ${copied ? 'scale-100 opacity-100' : 'scale-50 opacity-0'}`}
+        >
+          <CheckIcon className="h-4 w-4" />
+        </span>
+      </span>
+      <span className="grid">
+        <span
+          aria-hidden={copied}
+          className={`col-start-1 row-start-1 ${fade} ${copied ? 'opacity-0' : 'opacity-100'}`}
+        >
+          Copy prompt
+        </span>
+        <span
+          aria-hidden={!copied}
+          className={`col-start-1 row-start-1 ${fade} ${copied ? 'opacity-100' : 'opacity-0'}`}
+        >
+          Copied
+        </span>
+      </span>
     </button>
   )
 }
