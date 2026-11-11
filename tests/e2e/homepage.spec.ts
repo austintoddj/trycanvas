@@ -90,8 +90,10 @@ test.describe('Homepage', () => {
     await page.goto('/')
     await expect(page.locator('h1')).toContainText('Publishing')
     await expect(page.locator('h1')).toContainText('on your own terms')
+    await expect(page.locator('h1')).toContainText('write')
+    await expect(page.getByText('Drafts, media, and roles.')).toBeVisible()
     await expect(
-      page.getByText(/write, edit, and brand your work/i)
+      page.getByText('Inside the Laravel app you already have.')
     ).toBeVisible()
     await expect(page.getByText(/Just shipped/i)).toBeVisible()
   })

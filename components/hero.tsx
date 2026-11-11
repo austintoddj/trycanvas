@@ -1,11 +1,6 @@
 import { CopyPromptButton } from './copy-prompt-button'
-import {
-  GitHubIcon,
-  LaravelIcon,
-  PhpIcon,
-  ReactIcon,
-  TailwindIcon
-} from './icons'
+import { HeldFrames } from './held-frames'
+import { GitHubIcon } from './icons'
 
 type HeroProps = {
   latestVersion?: string | null
@@ -29,32 +24,35 @@ export function Hero({ latestVersion, latestReleaseUrl }: HeroProps) {
           href={releaseHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="mb-8 inline-flex animate-fade-in items-center gap-2 rounded-full border border-canvas-200 bg-white/60 px-3 py-1 text-[12px] font-medium text-canvas-600 backdrop-blur transition-colors hover:border-canvas-300 hover:text-canvas-900 dark:border-canvas-800 dark:bg-canvas-900/60 dark:text-canvas-400 dark:hover:border-canvas-700 dark:hover:text-white"
+          className="mb-8 inline-block animate-fade-in text-[13px] font-medium text-canvas-600 transition-colors hover:text-canvas-900 dark:text-canvas-400 dark:hover:text-white"
         >
-          <span
-            className="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"
-            aria-hidden="true"
-          />
-          {shippedLabel}
+          {`New · ${shippedLabel}`}
         </a>
 
         <h1
-          className="mb-6 animate-fade-in-up text-balance text-4xl font-semibold leading-[1.1] tracking-tight text-canvas-900 sm:text-5xl md:text-6xl dark:text-white"
+          className="mb-6 animate-fade-in-up font-medium text-[clamp(2.75rem,6vw,5.25rem)] leading-[1.02] tracking-[-0.03em] text-canvas-900 dark:text-white"
           style={{ animationDelay: '0.05s' }}
         >
-          Publishing
-          <br className="hidden sm:block" />{' '}
-          <span className="text-canvas-500 dark:text-canvas-400">
-            on your own terms
+          <span className="block">Publishing,</span>
+          <span className="block text-canvas-500 dark:text-canvas-400">
+            on your own terms.
           </span>
+          <HeldFrames holdMs={2800} present="mask">
+            <span>write</span>
+            <span>edit</span>
+            <span>schedule</span>
+            <span>ship</span>
+          </HeldFrames>
         </h1>
 
         <p
-          className="mx-auto mb-10 max-w-2xl animate-fade-in-up text-pretty text-lg leading-relaxed text-canvas-600 sm:text-xl dark:text-canvas-400"
+          className="mx-auto mb-10 max-w-xl animate-fade-in-up text-lg leading-relaxed text-canvas-600 dark:text-canvas-400"
           style={{ animationDelay: '0.1s' }}
         >
-          Canvas is a powerful tool for Laravel apps that makes it easy to
-          write, edit, and brand your work with a range of publishing tools.
+          <span className="block">Drafts, media, and roles.</span>
+          <span className="block">
+            Inside the Laravel app you already have.
+          </span>
         </p>
 
         <div
@@ -71,32 +69,6 @@ export function Hero({ latestVersion, latestReleaseUrl }: HeroProps) {
             <GitHubIcon className="h-4 w-4" />
             View on GitHub
           </a>
-        </div>
-
-        <div
-          className="mt-16 flex animate-fade-in flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12px] font-medium text-canvas-500"
-          style={{ animationDelay: '0.25s' }}
-        >
-          <span className="flex items-center gap-1.5">
-            <LaravelIcon className="h-3.5 w-3.5 text-canvas-700 dark:text-canvas-300" />
-            Laravel 12+
-          </span>
-          <span className="flex items-center gap-1.5">
-            <PhpIcon className="h-3.5 w-3.5" />
-            PHP 8.3+
-          </span>
-          <span className="flex items-center gap-1.5">
-            <ReactIcon className="h-3.5 w-3.5" />
-            React 19
-          </span>
-          <span className="flex items-center gap-1.5">
-            <TailwindIcon className="h-3.5 w-3.5" />
-            Tailwind CSS
-          </span>
-          <span className="flex items-center gap-1.5">
-            <GitHubIcon className="h-3.5 w-3.5" />
-            MIT License
-          </span>
         </div>
       </div>
     </section>

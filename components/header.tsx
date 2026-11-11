@@ -49,12 +49,12 @@ export function Header({ stars = null }: HeaderProps) {
             href="https://github.com/austintoddj/canvas"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-canvas-200 bg-white px-3.5 py-1.5 text-[13px] font-medium text-canvas-700 transition-colors hover:border-canvas-300 hover:bg-canvas-50 hover:text-canvas-900 dark:border-canvas-700 dark:bg-canvas-800 dark:text-canvas-50 dark:hover:border-canvas-600 dark:hover:bg-canvas-700 dark:hover:text-white"
+            className="inline-flex items-center gap-1.5 text-[13px] font-medium text-canvas-600 transition-colors hover:text-canvas-900 dark:text-canvas-400 dark:hover:text-white"
           >
             <GitHubIcon className="h-3.5 w-3.5" />
             <span>Star</span>
-            {stars != null && (
-              <span className="rounded-full bg-canvas-100 px-1.5 py-0.5 text-[11px] font-semibold tabular-nums leading-none text-canvas-600 dark:bg-black/20 dark:text-canvas-300">
+            {typeof stars === 'number' && (
+              <span className="tabular-nums">
                 {starFormatter.format(stars)}
               </span>
             )}

@@ -4,7 +4,6 @@ import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { Hero } from '@/components/hero'
 import { Install } from '@/components/install'
-import { ProductShowcase } from '@/components/product-showcase'
 import { SocialProof } from '@/components/social-proof'
 import { getLatestRelease, getSiteStats } from '@/lib/stats'
 
@@ -19,7 +18,6 @@ export default async function Home() {
       <Header stars={stats.stars} />
       <main id="top">
         <Hero latestVersion={release?.tag} latestReleaseUrl={release?.url} />
-        <ProductShowcase />
         <Features />
         <Install packageVersion={release?.tag} />
         <SocialProof stats={stats} />
